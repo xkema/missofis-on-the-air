@@ -1,0 +1,21 @@
+{
+  "name": "missofis-on-the-air",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "<kemalxyz@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/xkema/missofis-on-the-air",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.6"
+  }
+}
