@@ -1,19 +1,24 @@
 {
   "name": "missofis-on-the-air",
   "version": "1.0.0",
-  "description": "",
+  "description": "missofis-on-the-air",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {},
   "devDependencies": {
+    "angular-mocks": "^1.5.7",
     "connect-history-api-fallback": "^1.2.0",
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-karma": "^2.0.0",
-    "karma": "^0.13.22"
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.0.4",
+    "karma-phantomjs-launcher": "^1.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

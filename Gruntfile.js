@@ -20,7 +20,7 @@ module.exports = function( grunt ) {
 		// task :: @see https://github.com/gruntjs/grunt-contrib-watch#watch-task
 		,watch: {			
 			configFiles: {
-				files: 'Gruntfile.js',
+				files: [ 'Gruntfile.js', 'karma.conf.js' ],
 				options: {
 					reload: true
 				}
@@ -31,7 +31,10 @@ module.exports = function( grunt ) {
 			dev: {
 				bsFiles: {
 					src: [
-						'app/*.*'
+						'app/index.html',
+						'app/views/_*/*.controller?(.spec).js',
+						'app/views/_*/view-*.html',
+						'app/core/*.js'
 					]
 				},
 				options: {
@@ -54,10 +57,10 @@ module.exports = function( grunt ) {
 		// task :: @see https://www.npmjs.com/package/grunt-karma
 		,karma: {
 			unit: {
-				configFile: 'karma.conf.js'
+				configFile: 'karma.conf.js',
+				background: true
 			}
 		}
-
 
 		/*
 		----------------------------------------------------------------
@@ -70,17 +73,22 @@ module.exports = function( grunt ) {
 	// load modules (dev)
 	grunt.loadNpmTasks( 'grunt-browser-sync' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	// load modules (build)
 	grunt.loadNpmTasks( 'grunt-karma' );
+	// load modules (build)
 
 	// register "default" development task for grunt
 	grunt.registerTask( 'default', function() {
-		grunt.task.run( 'browserSync:dev', 'watch' );
+		grunt.task.run( 'test', 'development', 'watch' );
+	} );
+
+	// register "development" task for grunt
+	grunt.registerTask( 'development', function() {
+		grunt.task.run( [ 'browserSync:dev' ] );
 	} );
 
 	// register "test" task for grunt
 	grunt.registerTask( 'test', function() {
-		grunt.task.run( 'karma' );
+		grunt.task.run( 'karma:unit' );
 	} );
 
 }; // end :: module.exports

@@ -1,10 +1,25 @@
 // karma test wrapper (missofis on the air)
 module.exports = function( config ) {
 
-	config.set( {
+	var _settings = {
 
-		
+		basePath: '',
+		autoWatch: true,
+		browsers: [ 'PhantomJS' ],
+		files: [
+			// vendor
+			'bower_components/angular/angular.js',
+			'node_modules/angular-mocks/angular-mocks.js',
+			// app
+			'app/core/app.module.js',
+			'app/core/app.config.js',
+			'app/views/_*/*.js'
+		],
+		frameworks: [ 'jasmine' ],
+		reporters: [ 'mocha' ] // @see https://www.npmjs.com/package/karma-mocha-reporter
 
-	} );
+	};
+
+	config.set( _settings );
 
 };
