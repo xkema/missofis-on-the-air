@@ -57,6 +57,9 @@ module.exports = function( grunt ) {
 		// task :: @see https://www.npmjs.com/package/grunt-karma
 		,karma: {
 			unit: {
+				configFile: 'karma.conf.js'
+			},
+			unit_bg: {
 				configFile: 'karma.conf.js',
 				background: true
 			}
@@ -78,13 +81,8 @@ module.exports = function( grunt ) {
 
 	// register "default" development task for grunt
 	grunt.registerTask( 'default', function() {
-		grunt.task.run( 'test', 'development', 'watch' );
-	} );
-
-	// register "development" task for grunt
-	grunt.registerTask( 'development', function() {
-		grunt.task.run( [ 'browserSync:dev' ] );
-	} );
+		grunt.task.run( 'karma:unit_bg', 'browserSync:dev', 'watch' );
+	} );	
 
 	// register "test" task for grunt
 	grunt.registerTask( 'test', function() {
