@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'HomeCtrl', HomeCtrl );
 
-	HomeCtrl.$inject = [];
+	HomeCtrl.$inject = [ '$log', '$scope' ];
 
 	/**
 	 * Home controller
 	 */
-	function HomeCtrl() {
+	function HomeCtrl( $log, $scope ) {
 
 		var vm = this;
 
@@ -25,10 +25,10 @@
 		*/
 		
 		// controller bindables
-		vm.sth = null;
+		vm.shows = null;
 
 		// controller api
-		vm.sthFn = _sthFn;
+		vm.getShows = _getShows;
 
 		// initialize controller
 		_init();
@@ -39,10 +39,10 @@
 		----------------------------------------------------------------
 		*/
 
-		// 
-		function _sthFn() {
+		// get shows
+		function _getShows() {
 
-			
+			vm.shows = [];
 
 		}
 
