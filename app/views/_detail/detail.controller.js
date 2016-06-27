@@ -1,5 +1,5 @@
 /**
- * Home controller
+ * Detail controller
  */
 (function () {
 
@@ -7,14 +7,14 @@
 
 	angular
 		.module( 'com.missofis.ontheair' )
-		.controller( 'HomeCtrl', HomeCtrl );
+		.controller( 'DetailCtrl', DetailCtrl );
 
-	HomeCtrl.$inject = [ '$log', '$http' ];
+	DetailCtrl.$inject = [ '$log', '$http' ];
 
 	/**
-	 * Home controller
+	 * Detail controller
 	 */
-	function HomeCtrl( $log, $http ) {
+	function DetailCtrl( $log, $http ) {
 
 		var vm = this;
 
@@ -25,10 +25,10 @@
 		*/
 		
 		// controller bindables
-		vm.shows = null;
+		vm.show = null;
 
 		// controller api
-		vm.getShows = _getShows;
+		vm.getShow = _getShow;
 
 		// initialize controller
 		_init();
@@ -39,13 +39,13 @@
 		----------------------------------------------------------------
 		*/
 
-		// get shows
-		function _getShows() {
+		// get show
+		function _getShow() {
 
 			$http
-				.get( 'test/mock-data/get.tv.on_the_air.json' )
+				.get( 'test/mock-data/get.tv.id.json' )
 				.then( function( response ) {
-					vm.shows = response.data.results;
+					vm.show = response.data;
 				} );
 
 		}
@@ -53,9 +53,9 @@
 		// controller initialize
 		function _init() {
 
-			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' );
+			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'DetailCtrl' );
 
-			_getShows();
+			_getShow();
 
 		}
 

@@ -10,18 +10,35 @@
 		.config( configApp )
 		.run( runApp );
 
-	configApp.$inject = [ '$locationProvider' ];
+	configApp.$inject = [ '$locationProvider', '$routeProvider' ];
 	runApp.$inject = [];
 
 	/**
 	 * Bupz client config block
 	 */
-	function configApp( $locationProvider ) {
+	function configApp( $locationProvider, $routeProvider ) {
 
 		// todo :: requires server url rewriting
 		// enable HTML5 History API with hashbang fallback
 		// 'connect-history-api-fallback' fixes the reloading stuff
 		$locationProvider.html5Mode( true ).hashPrefix( '!' );
+
+		$routeProvider
+
+			.when( '/', {
+				templateUrl: 'views/_home/view-home.html',
+				controller: 'HomeCtrl',
+				controllerAs: 'vm'
+			} )
+			.when( '/shows/:showId', {
+				templateUrl: 'views/_detail/view-detail.html',
+				controller: 'DetailCtrl',
+				controllerAs: 'vm'
+			} )
+			.otherwise( {
+				templateUrl: 'views/_error/view-error.html',
+				redirectTo: '/404'
+			} );
 
 	}
 

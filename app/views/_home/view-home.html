@@ -1,1 +1,8 @@
 <h1>home</h1>
+<ul>
+	<li ng-repeat="show in vm.shows">
+		<h4>{{show.name}}</h4>
+		<p><small>{{show.overview}}</small></p>
+		<p><a ng-href="/shows/{{show.id}}">show detail &raquo;</a></p>
+	</li>
+</ul>
