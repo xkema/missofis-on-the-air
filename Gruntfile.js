@@ -48,7 +48,7 @@ module.exports = function( grunt ) {
 						},
 						middleware: _historyApiFallback()
 					},
-					open: true,
+					open: !true,
 					browser: [ 'chrome' ], // strangely opens in chrome canary :)
 				}
 			}
