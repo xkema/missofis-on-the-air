@@ -1,46 +1,34 @@
 describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 
+	'use strict';
+
 	// MockHelpers helper script is defined in global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
 
-	var HomeCtrl;
+	var $log, $rootScope, $controller, $httpBackend, 
+		HomeCtrl;
 	
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( $controller ) {
+		angular.mock.inject( function( _$log_, _$rootScope_, _$controller_, _$httpBackend_ ) {
+			$log = _$log_; $rootScope = _$rootScope_; $controller = _$controller_; $httpBackend = _$httpBackend_;
 			HomeCtrl = $controller( 'HomeCtrl' );
 		} );
+		jasmine.addCustomEqualityTester( angular.equals ); // @see 
 	} );
 
-	describe( 'HomeCtrl :: Controller Creation', function() {
+	describe( 'HomeCtrl', function() {
 
-		it( 'should define "shows" property and set it to "null"', function() {
-			expect( HomeCtrl.shows ).toBeNull();
-		} );
-
-		it( 'should define "getShows()" method', function() {
-			expect( HomeCtrl.getShows ).toBeDefined();
+		it( 'should log controller initialization message ("hello world!" test)', function() {
+			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' ] );
 		} );
 		
-	} );
-
-	describe( 'HomeCtrl :: Controller XHR Related', function() {
-
-		var $httpBackend;
-
-		beforeEach( function() {
-			angular.mock.inject( function( _$httpBackend_ ) {
-				$httpBackend = _$httpBackend_;
-			} );
-		} );
-
 		it( 'should fill "shows" object', function() {
-			var _showsMockData = MockHelpers.getShowsMockData();
 			$httpBackend
-				.expect( 'GET', 'test/mock-data/get.tv.on_the_air.json' )
-				.respond( MockHelpers.getShowsMockData() ); // send server response object (pagination data along with results object) to PhantomJS browser -or any-
+				.expect( 'GET', 'http://api.themoviedb.org/3/tv/on_the_air?api_key=e5622c57e54033c56b6cd5fced4e200b' )
+				.respond( MockHelpers.getShowsMockData() );				
 			$httpBackend.flush();
-			expect( HomeCtrl.shows ).toEqual( _showsMockData.results ); // check if shows object properly filled with results data from server response object
+			expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
 		} );
 
 	} );

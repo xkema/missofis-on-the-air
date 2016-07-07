@@ -14,6 +14,7 @@
 	<!-- scripts -->
 	<script src="../bower_components/angular/angular.min.js"></script>
 	<script src="../bower_components/angular-route/angular-route.min.js"></script>
+	<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
 </head>
 <body>
 
@@ -43,6 +44,12 @@
 	<!-- application main module -->
 	<script src="core/app.module.js"></script>
 	<script src="core/app.config.js"></script>
+
+	<!-- service modules -->
+	<script src="services/TMDb/TMDb.module.js"></script>
+	<script src="services/TMDb/TMDb.constants.js"></script>
+	<script src="services/TMDb/TV/TMDb.TV.module.js"></script>
+	<script src="services/TMDb/TV/TMDb.TV.service.js"></script>
 
 	<!-- home module -->
 	<script src="views/_home/home.controller.js"></script>

@@ -25,6 +25,12 @@ var MockHelpers = ( function() {
 					"id": 62425,
 					"overview": "The six-person crew of a derelict spaceship awakens from stasis in the farthest reaches of space. Their memories wiped clean, they have no recollection of who they are or how they got on board. The only clue to their identities is a cargo bay full of weaponry and a destination: a remote mining colony that is about to become a war zone. With no idea whose side they are on, they face a deadly decision. Will these amnesiacs turn their backs on history, or will their pasts catch up with them?",
 					"name": "Dark Matter"
+				},
+				{
+					"backdrop_path": "/jXpndJTekLFYcx3xX0H3sDqFnJU.jpg",
+					"id": 62196,
+					"overview": "A young woman is recruited into a secret government agency to be “stitched” into the minds of the recently deceased, using their memories to investigate murders.",
+					"name": "Stitchers"
 				}
 			],
 			"total_pages": 10,

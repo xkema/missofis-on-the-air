@@ -10,13 +10,16 @@ module.exports = function( config ) {
 			// vendor
 			'bower_components/angular/angular.min.js',
 			'bower_components/angular-route/angular-route.min.js',
+			'bower_components/angular-resource/angular-resource.min.js',
 			'node_modules/angular-mocks/angular-mocks.js',
 			// test helpers
 			'test/mock-helpers/mock-helpers.js',
 			// app
 			'app/core/app.module.js',
 			'app/core/app.config.js',
-			// 'app/services/*.js',
+			'app/services/**/**/*.module.js',
+			'app/services/TMDb/TMDb.constants.js',
+			'app/services/TMDb/**/*.*.service.js',
 			// 'app/common/_*/*.js',
 			'app/views/_*/*.js'
 		],

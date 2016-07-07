@@ -1,6 +1,9 @@
 <h1>home</h1>
+<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:240px;display:block;overflow:scroll;">
+{{vm.shows}}
+</code>
 <ul>
-	<li ng-repeat="show in vm.shows">
+	<li ng-repeat="show in vm.shows.results">
 		<h4>{{show.name}}</h4>
 		<p><small>{{show.overview}}</small></p>
 		<p><a ng-href="/shows/{{show.id}}">show detail &raquo;</a></p>

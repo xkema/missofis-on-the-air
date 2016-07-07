@@ -7,7 +7,9 @@
 
 	angular.module( 'com.missofis.ontheair', [
 
-		'ngRoute'
+		'ngRoute',
+
+		'com.missofis.TMDb'
 
 	] );
 

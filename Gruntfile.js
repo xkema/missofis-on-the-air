@@ -34,7 +34,8 @@ module.exports = function( grunt ) {
 						'app/index.html',
 						'app/views/_*/*.controller?(.spec).js',
 						'app/views/_*/view-*.html',
-						'app/core/*.js'
+						'app/core/*.js',
+						'app/services/**/**/*.js'
 					]
 				},
 				options: {
