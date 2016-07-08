@@ -6,12 +6,12 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 	// @see `mock-helpers.js` for mock data helpers
 
 	var $log, $rootScope, $controller, $httpBackend, 
-		HomeCtrl;
+		HomeCtrl, TMDbUtils;
 	
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( _$log_, _$rootScope_, _$controller_, _$httpBackend_ ) {
-			$log = _$log_; $rootScope = _$rootScope_; $controller = _$controller_; $httpBackend = _$httpBackend_;
+		angular.mock.inject( function( _$log_, _$rootScope_, _$controller_, _$httpBackend_, _TMDbUtils_ ) {
+			$log = _$log_; $rootScope = _$rootScope_; $controller = _$controller_; $httpBackend = _$httpBackend_; TMDbUtils = _TMDbUtils_;
 			HomeCtrl = $controller( 'HomeCtrl' );
 		} );
 		jasmine.addCustomEqualityTester( angular.equals ); // @see 
@@ -23,9 +23,9 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' ] );
 		} );
 		
-		it( 'should fill "shows" object', function() {
+		it( 'should fill "shows" object with getItems() call', function() {
 			$httpBackend
-				.expect( 'GET', 'http://api.themoviedb.org/3/tv/on_the_air?api_key=e5622c57e54033c56b6cd5fced4e200b' )
+				.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air' ) )
 				.respond( MockHelpers.getShowsMockData() );				
 			$httpBackend.flush();
 			expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );

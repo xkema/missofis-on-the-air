@@ -1,5 +1,5 @@
 /**
- * Bupz client module configuration
+ * On the Air client module configuration
  */
 (function () {
 
@@ -14,7 +14,7 @@
 	runApp.$inject = [];
 
 	/**
-	 * Bupz client config block
+	 * On the Air client config block
 	 */
 	function configApp( $locationProvider, $routeProvider ) {
 

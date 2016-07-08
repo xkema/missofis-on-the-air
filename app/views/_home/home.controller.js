@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'HomeCtrl', HomeCtrl );
 
-	HomeCtrl.$inject = [ '$log', 'TMDbTV' ];
+	HomeCtrl.$inject = [ '$log', 'TMDbTV', 'TMDbUtils' ];
 
 	/**
 	 * Home controller
 	 */
-	function HomeCtrl( $log, TMDbTV ) {
+	function HomeCtrl( $log, TMDbTV, TMDbUtils ) {
 
 		var vm = this;
 
@@ -41,8 +41,6 @@
 
 		// get shows
 		function _getShows() {
-
-			$log.debug( 'TMDbTV ::', TMDbTV );
 
 			vm.shows = TMDbTV.get( { endpoint: 'on_the_air' } );
 

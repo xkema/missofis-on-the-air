@@ -19,7 +19,9 @@ module.exports = function( config ) {
 			'app/core/app.config.js',
 			'app/services/**/**/*.module.js',
 			'app/services/TMDb/TMDb.constants.js',
+			'app/services/TMDb/TMDb.utils.js',
 			'app/services/TMDb/**/*.*.service.js',
+			'app/services/TMDb/**/*.spec.js',
 			// 'app/common/_*/*.js',
 			'app/views/_*/*.js'
 		],
