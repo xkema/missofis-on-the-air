@@ -12,16 +12,17 @@ module.exports = function( config ) {
 			'bower_components/angular-route/angular-route.min.js',
 			'bower_components/angular-resource/angular-resource.min.js',
 			'node_modules/angular-mocks/angular-mocks.js',
+			'https://www.gstatic.com/firebasejs/3.1.0/firebase.js',
 			// test helpers
 			'test/mock-helpers/mock-helpers.js',
 			// app
 			'app/core/app.module.js',
 			'app/core/app.config.js',
 			'app/services/**/**/*.module.js',
-			'app/services/TMDb/TMDb.constants.js',
-			'app/services/TMDb/TMDb.utils.js',
-			'app/services/TMDb/**/*.*.service.js',
-			'app/services/TMDb/**/*.spec.js',
+			'app/services/**/*.constants.js',
+			'app/services/**/*.utils.js',
+			'app/services/**/**/*.*.service.js',
+			'app/services/**/**/*.spec.js',
 			// 'app/common/_*/*.js',
 			'app/views/_*/*.js'
 		],

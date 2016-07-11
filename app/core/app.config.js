@@ -35,6 +35,11 @@
 				controller: 'DetailCtrl',
 				controllerAs: 'vm'
 			} )
+			.when( '/login', {
+				templateUrl: 'views/_login/view-login.html',
+				controller: 'LoginCtrl',
+				controllerAs: 'vm'
+			} )
 			.otherwise( {
 				templateUrl: 'views/_error/view-error.html',
 				redirectTo: '/404'

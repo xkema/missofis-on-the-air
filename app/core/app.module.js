@@ -9,7 +9,8 @@
 
 		'ngRoute',
 
-		'com.missofis.TMDb'
+		'com.missofis.TMDb',
+		'com.missofis.OnTheAirFirebase'
 
 	] );
 

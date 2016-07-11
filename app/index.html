@@ -26,6 +26,7 @@
 			<nav>
 				<a href="/">home</a>
 				<a href="/shows">error</a>
+				<a href="/login">login</a>
 			</nav>
 			<hr>
 		</header>
@@ -40,23 +41,41 @@
 		
 	</div>
 
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyAIl0R1GHtUY-afv83sk-UPCYHisZbsYKU",
+			authDomain: "untitled-tv-show-feed.firebaseapp.com",
+			databaseURL: "https://untitled-tv-show-feed.firebaseio.com",
+			storageBucket: "untitled-tv-show-feed.appspot.com",
+		};
+		firebase.initializeApp(config);
+	</script>
+
 	
 	<!-- application main module -->
 	<script src="core/app.module.js"></script>
 	<script src="core/app.config.js"></script>
 
-	<!-- service modules -->
+	<!-- service module (tmdb) -->
 	<script src="services/TMDb/TMDb.module.js"></script>
 	<script src="services/TMDb/TMDb.constants.js"></script>
 	<script src="services/TMDb/TMDb.utils.js"></script>
 	<script src="services/TMDb/TV/TMDb.TV.module.js"></script>
 	<script src="services/TMDb/TV/TMDb.TV.service.js"></script>
 
+	<!-- service module (firebase) -->
+	<script src="services/OnTheAirFirebase/OnTheAirFirebase.module.js"></script>
+	<script src="services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.module.js"></script>
+	<script src="services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.service.js"></script>	
+
 	<!-- home module -->
 	<script src="views/_home/home.controller.js"></script>
 	<!-- detail module -->
 	<script src="views/_detail/detail.controller.js"></script>
-
+	<!-- login module -->
+	<script src="views/_login/login.controller.js"></script>
 
 </body>
 </html>
