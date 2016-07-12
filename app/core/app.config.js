@@ -11,7 +11,7 @@
 		.run( runApp );
 
 	configApp.$inject = [ '$locationProvider', '$routeProvider' ];
-	runApp.$inject = [];
+	runApp.$inject = [ '$log' ];
 
 	/**
 	 * On the Air client config block
@@ -50,7 +50,23 @@
 	/**
 	 * Application main run block
 	 */
-	function runApp() {
+	function runApp( $log ) {
+
+		firebase
+			.auth()
+			.onAuthStateChanged( function( user ) {
+
+				$log.debug( user );
+
+			}, function( error ) {
+
+				$log.debug( error );
+
+			}, function() {
+
+				$log.debug( 'success' );
+
+			} );
 
 	}
 
