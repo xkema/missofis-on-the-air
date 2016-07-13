@@ -16,7 +16,7 @@ describe( 'UNIT ::  Controller Test : LoginCtrl', function() {
 		} );
 	} );
 
-	describe( 'HomeCtrl', function() {
+	describe( 'LoginCtrl', function() {
 
 		it( 'should define controller bindables', function() {
 			// form data

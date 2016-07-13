@@ -12,7 +12,8 @@ module.exports = function( config ) {
 			'bower_components/angular-route/angular-route.min.js',
 			'bower_components/angular-resource/angular-resource.min.js',
 			'node_modules/angular-mocks/angular-mocks.js',
-			'https://www.gstatic.com/firebasejs/3.1.0/firebase.js',
+			'node_modules/firebase/firebase.js',
+			'app/assets/scripts/firebase-initialize-app.js',
 			// test helpers
 			'test/mock-helpers/mock-helpers.js',
 			// app
