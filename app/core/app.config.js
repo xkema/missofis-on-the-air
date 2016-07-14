@@ -52,21 +52,7 @@
 	 */
 	function runApp( $log ) {
 
-		firebase
-			.auth()
-			.onAuthStateChanged( function( user ) {
-
-				$log.debug( user );
-
-			}, function( error ) {
-
-				$log.debug( error );
-
-			}, function() {
-
-				$log.debug( 'success' );
-
-			} );
+		
 
 	}
 

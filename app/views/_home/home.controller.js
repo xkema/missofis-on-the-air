@@ -30,6 +30,22 @@
 		// controller api
 		vm.getShows = _getShows;
 
+		// controller api (new)
+		/*
+		angular.extend( this, {
+			
+			// public bindables
+			shows: null,
+			// public api
+			getShows: _getShows,
+			// private api (testability in mind)
+			__: {
+				init: _init
+			}
+
+		} );
+		*/
+
 		// initialize controller
 		_init();
 

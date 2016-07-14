@@ -27,7 +27,7 @@
 
 		function _request( config ) {
 
-			$log.info( '^^____ :: INTERCEPTOR (request)', config );
+			// $log.info( '^^____ :: INTERCEPTOR (request)', config );
 
 			return config;
 
@@ -45,7 +45,7 @@
 		// response error
 		function _responseError( rejection ) {
 
-			$log.info( '^^____ :: INTERCEPTOR (responseError)', rejection );
+			// $log.info( '^^____ :: INTERCEPTOR (responseError)', rejection );
 
 			return $q.reject( rejection );
 
