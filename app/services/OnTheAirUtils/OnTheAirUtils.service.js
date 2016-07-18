@@ -17,10 +17,16 @@
 	 */
 	function OnTheAirUtils() {
 
+		var _appState = {
+
+			user: null
+
+		};
+
 		return {
 
-			//  doSth Service
-			doSth: _doSth
+			getAppState: _getAppState,
+			setAppState: _setAppState
 
 		};
 
@@ -33,13 +39,23 @@
 		/**
 		 * desc
 		 * 
-		 * @param 
+		 * @param target
 		 */
-		function _doSth( email, password ) {
+		function _getAppState( target ) {
 
-			return firebase
-				.auth()
-				.createUserWithEmailAndPassword( email, password );
+			return target ? _appState[ target ] : _appState;
+
+		}
+
+		/**
+		 * desc
+		 * 
+		 * @param target
+		 * @param data
+		 */
+		function _setAppState( target, data ) {
+
+			_appState[ target ] = data;
 
 		}
 		

@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'LoginCtrl', LoginCtrl );
 
-	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth' ];
+	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils' ];
 
 	/**
 	 * Login controller
 	 */
-	function LoginCtrl( $log, OnTheAirFirebaseAuth ) {
+	function LoginCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils ) {
 
 		var vm = this;
 
@@ -35,6 +35,7 @@
 				password: 'eJHStJe8ketqcBmU'
 			}
 		};
+		vm.appState = null;
 
 		// controller api
 		vm.registerUser = _registerUser;
@@ -72,6 +73,8 @@
 		function _init() {
 
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'LoginCtrl' );
+
+			vm.appState = OnTheAirUtils.getAppState();
 
 		}
 

@@ -9,18 +9,19 @@
 		.module( 'com.missofis.OnTheAirFirebase' )
 		.run( runApp );
 
-	runApp.$inject = [ '$log', 'OnTheAirUtils' ];
+	runApp.$inject = [ '$log', 'OnTheAirUtils', '$rootScope' ];
 
 	/**
 	 * Application main run block
 	 */
-	function runApp( $log, OnTheAirUtils ) {
+	function runApp( $log, OnTheAirUtils, $rootScope ) {
 
 		firebase
 			.auth()
 			.onAuthStateChanged( function( user ) {
 
 				OnTheAirUtils.setAppState( 'user', user );
+				$rootScope.$apply();
 
 			}, function( error ) {
 
