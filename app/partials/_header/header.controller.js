@@ -1,5 +1,5 @@
 /**
- * Login controller
+ * Header controller
  */
 (function () {
 
@@ -7,14 +7,14 @@
 
 	angular
 		.module( 'com.missofis.ontheair' )
-		.controller( 'LoginCtrl', LoginCtrl );
+		.controller( 'OnTheAirHeaderCtrl', OnTheAirHeaderCtrl );
 
-	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils' ];
+	OnTheAirHeaderCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils' ];
 
 	/**
-	 * Login controller
+	 * Header controller
 	 */
-	function LoginCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils ) {
+	function OnTheAirHeaderCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils ) {
 
 		var vm = this;
 
@@ -25,21 +25,10 @@
 		*/
 		
 		// controller bindables
-		vm.form = {
-			register: {
-				email: 'at@atmail.com',
-				password: 'eJHStJe8ketqcBmU'
-			},
-			login: {
-				email: 'at@atmail.com',
-				password: 'eJHStJe8ketqcBmU'
-			}
-		};
 		vm.appState = null;
 
 		// controller api
-		vm.registerUser = _registerUser;
-		vm.loginUser = _loginUser;
+		// vm.loginUser = _loginUser;
 		vm.logoutUser = _logoutUser;
 
 		// initialize controller
@@ -52,16 +41,12 @@
 		*/
 
 		// login user
-		function _registerUser() {
-			OnTheAirFirebaseAuth
-				.register( vm.form.register.email, vm.form.register.password );
-		}
-
-		// login user
+		/*
 		function _loginUser() {
 			OnTheAirFirebaseAuth
 				.login( vm.form.login.email, vm.form.login.password );
 		}
+		*/
 
 		// logout user
 		function _logoutUser() {
@@ -71,7 +56,7 @@
 
 		// controller initialize
 		function _init() {
-			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'LoginCtrl' );
+			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'OnTheAirHeaderCtrl' );
 			vm.appState = OnTheAirUtils.getAppState();
 		}
 

@@ -33,7 +33,9 @@ module.exports = function( grunt ) {
 					src: [
 						'app/index.html',
 						'app/views/_*/*.controller?(.spec).js',
+						'app/partials/_header/*.(controller|directive)?(.spec).js',
 						'app/views/_*/view-*.html',
+						'app/partials/_*/template-*.html',
 						'app/core/*.js',
 						'app/services/**/**/*.js'
 					]

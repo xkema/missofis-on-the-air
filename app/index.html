@@ -21,15 +21,8 @@
 	<!-- app main wrapper -->
 	<div id="ontheair-app-wrapper">
 
-		<header>
-			<p>app header</p>
-			<nav>
-				<a href="/">home</a>
-				<a href="/shows">error</a>
-				<a href="/login">login</a>
-			</nav>
-			<hr>
-		</header>
+		<!-- app header -->
+		<on-the-air-header></on-the-air-header>
 
 		<!-- app views -->
 		<div ng-view></div>
@@ -65,7 +58,11 @@
 	<script src="services/OnTheAirFirebase/OnTheAirFirebase.module.js"></script>
 	<script src="services/OnTheAirFirebase/OnTheAirFirebase.config.js"></script>
 	<script src="services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.module.js"></script>
-	<script src="services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.service.js"></script>	
+	<script src="services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.service.js"></script>
+
+	<!-- header partial -->
+	<script src="partials/_header/header.controller.js"></script>
+	<script src="partials/_header/header.directive.js"></script>
 
 	<!-- home module -->
 	<script src="views/_home/home.controller.js"></script>

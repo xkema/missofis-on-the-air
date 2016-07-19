@@ -42,6 +42,10 @@ module.exports = function( config ) {
 			'app/services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.module.js',
 			'app/services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.service.js',
 			'app/services/OnTheAirFirebase/Auth/OnTheAirFirebase.Auth.service.spec.js',
+			// partials :: header
+			'app/partials/_header/header.controller.js',
+			'app/partials/_header/header.controller.spec.js',
+			'app/partials/_header/header.directive.js',
 			// app views :: home
 			'app/views/_home/home.controller.js',
 			'app/views/_home/home.controller.spec.js',
