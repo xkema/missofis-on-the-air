@@ -54,7 +54,12 @@
 		// login user
 		function _registerUser() {
 			OnTheAirFirebaseAuth
-				.register( vm.form.register.email, vm.form.register.password );
+				.register( vm.form.register.email, vm.form.register.password )
+				.then( function( response ) {
+					$log.debug( response );
+				}, function( error ) {
+					$log.debug( error );
+				} );
 		}
 
 		// login user
