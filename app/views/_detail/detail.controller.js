@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'DetailCtrl', DetailCtrl );
 
-	DetailCtrl.$inject = [ '$log', '$http' ];
+	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams' ];
 
 	/**
 	 * Detail controller
 	 */
-	function DetailCtrl( $log, $http ) {
+	function DetailCtrl( $log, TMDbTV, $routeParams ) {
 
 		var vm = this;
 
@@ -41,13 +41,9 @@
 
 		// get show
 		function _getShow() {
-
-			$http
-				.get( 'test/mock-data/get.tv.id.json' )
-				.then( function( response ) {
-					vm.show = response.data;
-				} );
-
+			
+			vm.show = TMDbTV.get( { id: $routeParams.showId } );
+			
 		}
 
 		// controller initialize
@@ -55,7 +51,7 @@
 
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'DetailCtrl' );
 
-			_getShow();
+			vm.getShow();
 
 		}
 

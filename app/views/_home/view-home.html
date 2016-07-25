@@ -5,7 +5,6 @@
 <ul>
 	<li ng-repeat="show in vm.shows.results">
 		<h4>{{show.name}}</h4>
-		<p><small>{{show.overview}}</small></p>
-		<p><a ng-href="/shows/{{show.id}}">show detail &raquo;</a></p>
+		<p><small>{{show.overview | limitTo:120}}.. <a ng-href="/shows/{{show.id}}">show detail &raquo;</a></small></p>
 	</li>
 </ul>
