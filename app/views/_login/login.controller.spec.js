@@ -20,14 +20,12 @@ describe( 'UNIT ::  Controller Test : LoginCtrl', function() {
 	describe( 'LoginCtrl', function() {
 
 		it( 'should define controller bindables', function() {
-			// form data
 			expect( LoginCtrl.form.register ).toBeDefined();
 			expect( LoginCtrl.form.login ).toBeDefined();
 			expect( LoginCtrl.appState.user ).toBeNull();
 		} );
 
 		it( 'should define form submit handlers', function() {
-			// form data
 			expect( LoginCtrl.registerUser ).toBeDefined();
 			expect( LoginCtrl.loginUser ).toBeDefined();
 			expect( LoginCtrl.logoutUser ).toBeDefined();
