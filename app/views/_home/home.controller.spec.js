@@ -5,22 +5,17 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 	// MockHelpers helper script is defined in global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
 
-	var $log, $rootScope, $controller, $httpBackend, 
+	var $log, $controller, $httpBackend, 
 		HomeCtrl, TMDbUtils;
 	
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( _$log_, _$rootScope_, _$controller_, _$httpBackend_, _TMDbUtils_ ) {
-			$log = _$log_; $rootScope = _$rootScope_; $controller = _$controller_; $httpBackend = _$httpBackend_; TMDbUtils = _TMDbUtils_;
+		angular.mock.inject( function( _$log_, _$controller_, _$httpBackend_, _TMDbUtils_ ) {
+			$log = _$log_; $controller = _$controller_; $httpBackend = _$httpBackend_; TMDbUtils = _TMDbUtils_;
 			HomeCtrl = $controller( 'HomeCtrl' );
 		} );
 		jasmine.addCustomEqualityTester( angular.equals ); // @see 
 	} );
-
-	afterEach(function () {
-		// $httpBackend.verifyNoOutstandingExpectation();
-		// $httpBackend.verifyNoOutstandingRequest();
-	});
 
 	describe( 'HomeCtrl', function() {
 
