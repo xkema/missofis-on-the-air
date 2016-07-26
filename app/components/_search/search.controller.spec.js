@@ -1,9 +1,11 @@
-describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
+describe( 'UNIT ::  Controller Test : SearchCtrl', function() {
 
 	'use strict';
 
 	// MockHelpers helper script is defined in global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
+
+	return false;
 
 	var $log, $rootScope, $controller, $httpBackend, 
 		HomeCtrl, TMDbUtils;
@@ -34,11 +36,19 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 				$httpBackend
 					.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air', false ) )
 					.respond( MockHelpers.getShowsMockData() );
+				$httpBackend
+					.expect( 'GET', TMDbUtils.queryBuilder( 'search', false, 'tv', { query: 'leyla' } ) )
+					.respond( MockHelpers.getTvSearchResultsMockData() );
 			} );
 
 			it( 'should fill "shows" object with getShows() call', function() {
 				$httpBackend.flush();
 				expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
+			} );
+
+			it( 'should fill "searchResults" object with searchShow() call', function() {
+				$httpBackend.flush();
+				expect( HomeCtrl.searchResults ).toEqual( MockHelpers.getTvSearchResultsMockData() );
 			} );
 		
 		} );

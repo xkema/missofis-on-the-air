@@ -32,10 +32,15 @@ module.exports = function( grunt ) {
 				bsFiles: {
 					src: [
 						'app/index.html',
+						
 						'app/views/_*/*.controller?(.spec).js',
-						'app/partials/_header/*.(controller|directive)?(.spec).js',
+						'app/partials/_*/*.(controller|directive)?(.spec).js',
+						'app/components/_*/*.(controller|component)?(.spec).js',
+						
 						'app/views/_*/view-*.html',
 						'app/partials/_*/template-*.html',
+						'app/components/_*/template-*.html',
+						
 						'app/core/*.js',
 						'app/services/**/**/*.js'
 					]

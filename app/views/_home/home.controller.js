@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'HomeCtrl', HomeCtrl );
 
-	HomeCtrl.$inject = [ '$log', 'TMDbTV', 'TMDbUtils', 'TMDbSearch' ];
+	HomeCtrl.$inject = [ '$log', 'TMDbTV', 'TMDbUtils' ];
 
 	/**
 	 * Home controller
 	 */
-	function HomeCtrl( $log, TMDbTV, TMDbUtils, TMDbSearch ) {
+	function HomeCtrl( $log, TMDbTV, TMDbUtils ) {
 
 		var vm = this;
 
@@ -26,11 +26,9 @@
 		
 		// controller bindables
 		vm.shows = null;
-		vm.searchResults = null;
 
 		// controller api
 		vm.getShows = _getShows;
-		vm.searchShow = _searchShow;
 
 		// controller api (new)
 		/*
@@ -64,21 +62,12 @@
 
 		}
 
-		// search show
-		function _searchShow() {
-
-			vm.searchResults = TMDbSearch.get( { endpoint: 'tv', query: 'leyla' } );
-
-		}
-
 		// controller initialize
 		function _init() {
 
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' );
 
 			vm.getShows();
-
-			vm.searchShow();
 
 		}
 

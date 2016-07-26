@@ -1,0 +1,21 @@
+<!-- search -->
+<div>
+
+	<h3>search component</h3>
+
+	<form ng-submit="vm.searchShow()">
+		<input type="search" placeholder="search.." ng-model="vm.searchQuery">
+		<button type="submit">search</button>
+	</form>
+	
+	<ul>
+		<li ng-repeat="show in vm.searchResult.results">
+			<p><small>{{show.name}}</small></p>
+		</li>
+	</ul>
+
+	<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
+	vm search :: {{vm}}
+	</code>
+	
+</div>
