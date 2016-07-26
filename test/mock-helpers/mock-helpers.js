@@ -6,7 +6,8 @@ var MockHelpers = ( function() {
 	return {
 		getShowsMockData: _getShowsMockData,
 		getShowMockData: _getShowMockData,
-		getFirebaseUserData: _getFirebaseUserData
+		getFirebaseUserData: _getFirebaseUserData,
+		getTvSearchResultsMockData: _getTvSearchResultsMockData
 	};
 
 	/**
@@ -47,6 +48,46 @@ var MockHelpers = ( function() {
 			"id": 1396,			
 			"name": "Breaking Bad",			
 			"overview": "Breaking Bad is an American crime drama television series created and produced by Vince Gilligan. Set and produced in Albuquerque, New Mexico, Breaking Bad is the story of Walter White, a struggling high school chemistry teacher who is diagnosed with inoperable lung cancer at the beginning of the series. He turns to a life of crime, producing and selling methamphetamine, in order to secure his family's financial future before he dies, teaming with his former student, Jesse Pinkman. Heavily serialized, the series is known for positioning its characters in seemingly inextricable corners and has been labeled a contemporary western by its creator."
+		};
+
+	}
+
+	/**
+	 *
+	 */
+	function _getTvSearchResultsMockData() {
+
+		return {
+			"page": 1,
+			"results": [
+				{
+					"backdrop_path": "/rWY8nL277IijjUDGoyrscdPjDiR.jpg",
+					"id": 40417,
+					"overview": "Leyla ile Mecnun is a Turkish television comedy series. The show is set in Istanbul, Turkey and premiered in 2011 on TRT. The series is a surreal and absurd comedy that revolves around the fictional love story between Leyla and Mecnun.",
+					"name": "Leyla ile Mecnun"
+				},
+				{
+					"backdrop_path": null,
+					"id": 44669,
+					"overview": "Leyla'nın Evi is a Turkish romantic drama television series which is not broadcast yet in Turkey. The title, which is similar to that of Zülfü Livaneli's book \"Leyla'nın Evi\", is very different and is not an adaptation of that book. It is about a woman, Leyla, who after the murder of her beloved husband, Ramazan, tries to find happiness with her two children, Mehmet and Merve",
+					"name": "The House of Leyla",
+				},
+				{
+					"backdrop_path": null,
+					"id": 59441,
+					"overview": "Ask the Leyland Brothers was an Australian television show that screened between 1976 and 1980, covering 153 episodes. The series followed the Leyland brothers, Mike and Mal, who traveled across Australia and New Zealand in response to questions posed by viewers.",
+					"name": "Ask the Leyland Brothers",
+				},
+				{
+					"backdrop_path": null,
+					"id": 23398,
+					"overview": "",
+					"name": "Ask The Leyland Brothers",
+				}
+			],
+			"total_results": 5,
+			"total_pages": 1
+			
 		};
 
 	}

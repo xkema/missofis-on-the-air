@@ -35,6 +35,10 @@ module.exports = function( config ) {
 			'app/services/TMDb/TV/TMDb.TV.module.js',
 			'app/services/TMDb/TV/TMDb.TV.service.js',
 			'app/services/TMDb/TV/TMDb.TV.service.spec.js',
+			// app service :: TMDb Search module
+			'app/services/TMDb/Search/TMDb.Search.module.js',
+			'app/services/TMDb/Search/TMDb.Search.service.js',
+			'app/services/TMDb/Search/TMDb.Search.service.spec.js',
 			// app service :: Firebase module
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.module.js',
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.config.js',

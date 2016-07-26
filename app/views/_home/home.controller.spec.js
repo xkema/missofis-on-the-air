@@ -17,18 +17,38 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 		jasmine.addCustomEqualityTester( angular.equals ); // @see 
 	} );
 
+	afterEach(function () {
+		// $httpBackend.verifyNoOutstandingExpectation();
+		// $httpBackend.verifyNoOutstandingRequest();
+	});
+
 	describe( 'HomeCtrl', function() {
 
 		it( 'should log controller initialization message ("hello world!" test)', function() {
 			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' ] );
 		} );
+
+		describe( 'Sync XHR calls', function() {
+
+			beforeEach( function() {
+				$httpBackend
+					.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air', false ) )
+					.respond( MockHelpers.getShowsMockData() );
+				$httpBackend
+					.expect( 'GET', TMDbUtils.queryBuilder( 'search', false, 'tv', { query: 'leyla' } ) )
+					.respond( MockHelpers.getTvSearchResultsMockData() );
+			} );
+
+			it( 'should fill "shows" object with getShows() call', function() {
+				$httpBackend.flush();
+				expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
+			} );
+
+			it( 'should fill "searchResults" object with searchShow() call', function() {
+				$httpBackend.flush();
+				expect( HomeCtrl.searchResults ).toEqual( MockHelpers.getTvSearchResultsMockData() );
+			} );
 		
-		it( 'should fill "shows" object with getItems() call', function() {
-			$httpBackend
-				.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air' ) )
-				.respond( MockHelpers.getShowsMockData() );				
-			$httpBackend.flush();
-			expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
 		} );
 
 	} );

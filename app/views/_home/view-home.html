@@ -1,7 +1,13 @@
-<h1>home</h1>
+<h3>home</h3>
 <code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
 {{vm.shows}}
 </code>
+<hr>
+<h3>search results</h3>
+<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
+search results :: {{vm.searchResults}}
+</code>
+<hr>
 <ul>
 	<li ng-repeat="show in vm.shows.results">
 		<h4>{{show.name}}</h4>

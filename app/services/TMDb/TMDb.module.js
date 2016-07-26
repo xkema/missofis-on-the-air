@@ -9,7 +9,8 @@
 
 		'ngResource',
 
-		'com.missofis.TMDb.TV'
+		'com.missofis.TMDb.TV',
+		'com.missofis.TMDb.Search'
 
 	] );
 
