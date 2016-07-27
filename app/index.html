@@ -11,26 +11,40 @@
 	<meta name="description" content="missofis-on-the-air">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<!-- styles -->
-	<link rel="stylesheet" type="text/css" href="../bower_components/normalize-css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="../bower_components/missofis-untitled-boilerplate/dist/css/main.css">
+	<!-- material icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- google fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+	<!-- styles (angular material) -->
+	<link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.min.css">
 
 	<!-- scripts -->
 	<script src="../bower_components/angular/angular.min.js"></script>
 	<script src="../bower_components/angular-route/angular-route.min.js"></script>
 	<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="../bower_components/angular-material/angular-material.min.js"></script>
 </head>
 <body>
 
 	<!-- app main wrapper -->
-	<div id="ontheair-app-wrapper">
+	<div layout="column" id="ontheair-app-wrapper">
 
 		<!-- app header -->
-		<on-the-air-header></on-the-air-header>
+		<div>
+			<on-the-air-header></on-the-air-header>			
+		</div>
 
 		<!-- app views -->
-		<div ng-view></div>
+		<div layout="column"> <!-- holds a md-toolbar and md-content -->
+			<div ng-view></div>			
+		</div>
 		
+		<!-- app footer -->
 		<footer>
 			<hr>
 			<p>app footer</p>

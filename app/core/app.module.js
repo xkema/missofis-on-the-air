@@ -8,6 +8,7 @@
 	angular.module( 'com.missofis.ontheair', [
 
 		'ngRoute',
+		'ngMaterial',
 
 		'com.missofis.TMDb',
 		'com.missofis.OnTheAirFirebase'

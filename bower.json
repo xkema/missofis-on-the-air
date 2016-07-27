@@ -20,6 +20,6 @@
     "angular-route": "^1.5.7",
     "angular-resource": "^1.5.7",
     "firebase": "^3.2.0",
-    "missofis-untitled-boilerplate": "https://github.com/xkema/missofis-untitled-boilerplate.git#^0.1.0"
+    "angular-material": "^1.0.9"
   }
 }

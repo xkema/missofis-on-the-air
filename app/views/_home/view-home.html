@@ -1,16 +1,33 @@
-<h3>home</h3>
-<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
-{{vm.shows}}
-</code>
-<hr>
-<h3>search results</h3>
-<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
-search results :: {{vm.searchResults}}
-</code>
-<hr>
-<ul>
-	<li ng-repeat="show in vm.shows.results">
-		<h4>{{show.name}}</h4>
-		<p><small>{{show.overview | limitTo:120}}.. <a ng-href="/shows/{{show.id}}">show detail &raquo;</a>, <a href="/shows/{{show.id}}/pair">pair &raquo;</a></small></p>
-	</li>
-</ul>
+<!-- view :: home -->
+
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Home</span>
+		</h2>
+		<span flex></span>
+		<md-button class="md-raised" aria-label="do sth">do sth</md-button>
+	</div>
+</md-toolbar>
+
+<md-content layout="row" layout-align-gt-xs="center">
+	<md-list flex-gt-xs="50">
+		<md-list-item ng-repeat="show in vm.shows.results">
+			<md-card>
+				<img ng-src="http://image.tmdb.org/t/p/w300{{show.backdrop_path}}" class="md-card-image" alt="{{show.name}}" title="{{show.name}}">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{show.name}}</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<p>{{show.overview | limitTo:80}}..</p>
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="end center">
+					<md-button class="md-primary" ng-href="/shows/{{show.id}}">DETAIL</md-button>
+					<md-button class="md-primary md-raised" ng-href="/shows/{{show.id}}/pair">PAIR</md-button>
+				</md-card-actions>
+			</md-card>
+		</md-list-item>
+	</md-list>
+</md-content>
