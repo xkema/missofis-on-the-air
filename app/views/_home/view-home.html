@@ -11,6 +11,6 @@ search results :: {{vm.searchResults}}
 <ul>
 	<li ng-repeat="show in vm.shows.results">
 		<h4>{{show.name}}</h4>
-		<p><small>{{show.overview | limitTo:120}}.. <a ng-href="/shows/{{show.id}}">show detail &raquo;</a></small></p>
+		<p><small>{{show.overview | limitTo:120}}.. <a ng-href="/shows/{{show.id}}">show detail &raquo;</a>, <a href="/shows/{{show.id}}/pair">pair &raquo;</a></small></p>
 	</li>
 </ul>

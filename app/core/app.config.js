@@ -35,6 +35,11 @@
 				controller: 'DetailCtrl',
 				controllerAs: 'vm'
 			} )
+			.when( '/shows/:showId/pair', {
+				templateUrl: 'views/_pair/view-pair.html',
+				controller: 'PairCtrl',
+				controllerAs: 'vm'
+			} )
 			.when( '/login', {
 				templateUrl: 'views/_login/view-login.html',
 				controller: 'LoginCtrl',
