@@ -1,52 +1,50 @@
-<h1>login</h1>
-<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
-{{vm}}
-<hr>
-appState :: {{vm.appState.user}}
-</code>
+<!-- view :: login -->
+
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Login / Register</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<md-content layout="column" layout-gt-xs="row" layout-align="center" layout-padding>
+	<div md-whiteframe="1">
+		<form ng-submit="vm.loginUser()">
+			<md-input-container class="md-block">
+				<label>Email</label>
+				<input type="email" ng-model="vm.form.login.email" required>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Password</label>
+				<input type="password" ng-model="vm.form.login.password" required>
+			</md-input-container>
+			<md-button type="submit" class="md-primary md-raised">Login</md-button>			
+		</form>
+	</div>
+	<div md-whiteframe="1">
+		<form ng-submit="vm.registerUser()">
+			<md-input-container class="md-block">
+				<label>Email</label>
+				<input type="email" ng-model="vm.form.register.email" required>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Password</label>
+				<input type="password" ng-model="vm.form.register.password" required>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Password (again)</label>
+				<input type="password" ng-model="vm.form.register.password" required>
+			</md-input-container>
+			<md-button type="submit" class="md-primary md-raised">Register</md-button>			
+		</form>
+	</div>
+</md-content>
 
 
-<div>
-	<h2>register</h2>
-	<form ng-submit="vm.registerUser()">
-		<div>
-			<label for="">email:</label>
-			<input type="email" ng-model="vm.form.register.email" required>
-		</div>
-		<div>
-			<label for="">password:</label>
-			<input type="password" ng-model="vm.form.register.password" required>
-		</div>
-		<div>
-			<label for="">password again:</label>
-			<input type="password" ng-model="vm.form.register.password" required>
-		</div>
-		<div>
-			<button type="submit">register</button>
-		</div>
-	</form>
-</div>
 
-<hr>
 
-<div>
-	<h2>login</h2>
-	<form ng-submit="vm.loginUser()">
-		<div>
-			<label for="">email:</label>
-			<input type="email" ng-model="vm.form.login.email" required>
-		</div>
-		<div>
-			<label for="">password:</label>
-			<input type="password" ng-model="vm.form.login.password" required>
-		</div>
-		<div>
-			<button type="submit">login</button>
-		</div>
-	</form>
-</div>
-
-<hr>
+<!--
 
 <div>
 	<h2>logout</h2>
@@ -56,3 +54,5 @@ appState :: {{vm.appState.user}}
 		</div>
 	</form>
 </div>
+-->
+
