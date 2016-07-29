@@ -1,4 +1,4 @@
-<header class="ota-header">
+<header class="ota-header" layout="row" layout-align="none center">
 	<!--
 	<nav>
 		<a href="/">home</a>
@@ -13,17 +13,37 @@
 		</div>
 	</form>
 	-->
-	<span><a href="/">missofis on the air</a></span>
-	<span><a href="/login" aria-label="Login" style="float:right;">Login</a></span>
+
+	<md-button href="/" class="md-icon-button" aria-label="Home" title="Home">
+		<md-icon>home</md-icon>
+	</md-button>
+	<span flex></span>
+	<md-button ng-show="!vm.appState.user" href="/login" aria-label="login">Login</md-button>
+	<md-button ng-show="vm.appState.user" ng-click="vm.logoutUser()" aria-label="logout">Logout</md-button>	
 </header>
 
 
 
 
+
+
+
+
+
+
+
+
+
 <style type="text/css">
+	body {
+		overflow: hidden;
+	}
+	#ontheair-app-wrapper {
+		overflow-y: auto;
+	}
 	.ota-header {
-		background-color: #eeeeee;
-		border-bottom: #dddddd;
-		padding: 20px;
+		background-color: #f9f9f9;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 </style>

@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'OnTheAirHeaderCtrl', OnTheAirHeaderCtrl );
 
-	OnTheAirHeaderCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils' ];
+	OnTheAirHeaderCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$mdToast' ];
 
 	/**
 	 * Header controller
 	 */
-	function OnTheAirHeaderCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils ) {
+	function OnTheAirHeaderCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $mdToast ) {
 
 		var vm = this;
 
@@ -51,7 +51,12 @@
 		// logout user
 		function _logoutUser() {
 			OnTheAirFirebaseAuth
-				.logout();
+				.logout()
+				.then( function( response ) {
+					$mdToast.showSimple( 'See u later!' );
+				}, function( error ) {
+					$log.debug( error );
+				} );
 		}
 
 		// controller initialize

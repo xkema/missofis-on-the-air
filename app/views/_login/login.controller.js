@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'LoginCtrl', LoginCtrl );
 
-	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils' ];
+	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$location', '$mdToast' ];
 
 	/**
 	 * Login controller
 	 */
-	function LoginCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils ) {
+	function LoginCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $location, $mdToast ) {
 
 		var vm = this;
 
@@ -65,13 +65,25 @@
 		// login user
 		function _loginUser() {
 			OnTheAirFirebaseAuth
-				.login( vm.form.login.email, vm.form.login.password );
+				.login( vm.form.login.email, vm.form.login.password )
+				.then( function( response ) {
+					$mdToast.showSimple( 'Logged in succesfully!' );
+					$location.path( '/' );
+					$log.debug( response );
+				}, function( error ) {
+					$log.debug( error );
+				} );
 		}
 
 		// logout user
 		function _logoutUser() {
 			OnTheAirFirebaseAuth
-				.logout();
+				.logout()
+				.then( function( response ) {
+					$mdToast.showSimple( 'See u later!' );
+				}, function( error ) {
+					$log.debug( error );
+				} );
 		}
 
 		// controller initialize
