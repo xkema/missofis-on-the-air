@@ -1,5 +1,5 @@
 /**
- * OnTheAir Service "TV" module
+ * OnTheAir Service "Auth" module
  */
 (function () {
 

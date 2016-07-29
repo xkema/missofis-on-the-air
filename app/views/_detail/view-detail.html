@@ -20,12 +20,11 @@
 			<md-card-content>
 				<p>{{vm.show.overview}}</p>
 			</md-card-content>
-			<!--
-			<md-card-actions layout="row" layout-align="end center">
-				<md-button class="md-primary" ng-href="/shows/{{show.id}}">DETAIL</md-button>
-				<md-button class="md-primary" ng-href="/shows/{{show.id}}/pair">PAIR</md-button>
+			<md-card-actions layout="row" layout-align="center center">
+				<md-button class="md-icon-button" ng-click="vm.toggleFavorite()" ng-class="{'md-accent': vm.favorited}">
+					<md-icon>favorite</md-icon>
+				</md-button>
 			</md-card-actions>
-			-->
 		</md-card>
 	</div>
 </md-content>

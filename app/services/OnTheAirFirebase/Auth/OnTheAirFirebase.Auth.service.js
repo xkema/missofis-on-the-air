@@ -1,5 +1,5 @@
 /**
- * OnTheAir "Auth" Service
+ * OnTheAir Firebase "Auth" Service
  */
 (function () {
 
