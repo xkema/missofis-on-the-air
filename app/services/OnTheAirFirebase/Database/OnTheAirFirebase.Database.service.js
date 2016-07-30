@@ -21,7 +21,8 @@
 
 			//  doSth Service
 			favorite: _favorite,
-			unfavorite: _unfavorite
+			unfavorite: _unfavorite,
+			getUserFavorites: _getUserFavorites
 
 		};
 
@@ -36,14 +37,21 @@
 		 * 
 		 * @param 
 		 * @param 
+		 * @return
 		 */
 		function _favorite( userId, movieId ) {
 
-			return firebase
+			var _ref = firebase
 				.database()
-				.ref( 'user_favorites/' )
-				.child( userId )
-				.push( movieId );
+				.ref( 'user_favorites/' );
+
+			return _ref
+				.once( 'value' )
+				.then( function( snapshot ) {
+					if( !snapshot.child( userId ).child( movieId ).val() ) {
+						return _ref.child( userId ).child( movieId ).set( true );
+					}
+				} );
 
 		}
 
@@ -52,13 +60,39 @@
 		 * 
 		 * @param 
 		 * @param 
+		 * @return 
 		 */
 		function _unfavorite( userId, movieId ) {
+
+			var _ref = firebase
+				.database()
+				.ref( 'user_favorites/' );
+
+			return _ref
+				.once( 'value' )
+				.then( function( snapshot ) {
+					if( snapshot.child( userId ).child( movieId ).val() ) {
+						return _ref.child( userId ).child( movieId ).remove();
+					}
+				} );
+
+		}
+
+		/**
+		 * Get user favorites
+		 * 
+		 * @param 
+		 * @return
+		 */
+		function _getUserFavorites( userId ) {
 
 			return firebase
 				.database()
 				.ref( 'user_favorites/' + userId )
-				.remove( movieId );
+				.once( 'value' )
+				.then( function( snapshot ) {
+					return snapshot.val();
+				} );
 
 		}
 		

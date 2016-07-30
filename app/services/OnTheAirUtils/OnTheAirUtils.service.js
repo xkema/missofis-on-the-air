@@ -19,7 +19,8 @@
 
 		var _appState = {
 
-			user: null
+			user: null,
+			user_favorites: null
 
 		};
 

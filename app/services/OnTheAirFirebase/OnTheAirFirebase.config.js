@@ -9,19 +9,33 @@
 		.module( 'com.missofis.OnTheAirFirebase' )
 		.run( runApp );
 
-	runApp.$inject = [ '$log', 'OnTheAirUtils', '$rootScope' ];
+	runApp.$inject = [ '$log', 'OnTheAirUtils', '$rootScope', 'OnTheAirFirebaseDatabase' ];
 
 	/**
 	 * Application main run block
 	 */
-	function runApp( $log, OnTheAirUtils, $rootScope ) {
+	function runApp( $log, OnTheAirUtils, $rootScope, OnTheAirFirebaseDatabase ) {
 
 		firebase
 			.auth()
 			.onAuthStateChanged( function( user ) {
 
 				OnTheAirUtils.setAppState( 'user', user );
-				$rootScope.$apply();
+
+				if( user ) {
+					OnTheAirFirebaseDatabase
+						.getUserFavorites( user.uid )
+						.then( function( response ) {
+							OnTheAirUtils.setAppState( 'user_favorites', response );
+							$rootScope.$apply();
+						} );
+				}
+				else {
+					OnTheAirUtils.setAppState( 'user_favorites', null );
+					$rootScope.$apply();
+				}
+
+				// $rootScope.$apply();
 
 			}, function( error ) {
 
