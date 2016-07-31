@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'DetailCtrl', DetailCtrl );
 
-	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location' ];
+	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope' ];
 
 	/**
 	 * Detail controller
 	 */
-	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location ) {
+	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope ) {
 
 		var vm = this;
 
@@ -68,18 +68,22 @@
 				OnTheAirFirebaseDatabase
 					.unfavorite( vm.appState.user.uid, $routeParams.showId )
 					.then( function() {
+						delete vm.appState.user_favorites[ $routeParams.showId ];
 						$scope.$apply( function() {
 							vm.favorited = false;
 						} );
+						$rootScope.$apply();
 					} );
 			}
 			else {
 				OnTheAirFirebaseDatabase
 					.favorite( vm.appState.user.uid, $routeParams.showId, vm.show.name )
 					.then( function() {
+						vm.appState.user_favorites[ $routeParams.showId ] = vm.show.name;
 						$scope.$apply( function() {
 							vm.favorited = true;
 						} );
+						$rootScope.$apply();
 					} );
 			}			
 		}
