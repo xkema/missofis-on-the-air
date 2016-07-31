@@ -36,7 +36,7 @@
 				controllerAs: 'vm',
 				resolve: {
 					_show: [ 'TMDbTV', '$route', function( TMDbTV, $route ) {
-						return TMDbTV.get( { id: $route.current.params.showId } );
+						return TMDbTV.get( { id: $route.current.params.showId } ).$promise;
 					} ]
 				}
 			} )

@@ -10,6 +10,8 @@
 		'ngRoute',
 		'ngMaterial',
 
+		'youtube-embed',
+
 		'com.missofis.TMDb',
 		'com.missofis.OnTheAirFirebase'
 

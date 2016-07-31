@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'DetailCtrl', DetailCtrl );
 
-	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope', '_show' ];
+	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope', '_show', '$filter' ];
 
 	/**
 	 * Detail controller
 	 */
-	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope, _show ) {
+	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope, _show, $filter ) {
 
 		var vm = this;
 
@@ -28,10 +28,16 @@
 		vm.show = null;
 		vm.appState = null;
 		vm.favorited = false;
+		vm.videoVisible = false;
+		vm.video = null;
+		vm.youtubePlayer = null;
+		vm.pageLoading = true;
 
 		// controller api
 		vm.getShow = _getShow;
+		vm.getVideos = _getVideos;
 		vm.toggleFavorite = _toggleFavorite;
+		vm.toggleVideo = _toggleVideo;
 
 		// initialize controller
 		_init();
@@ -45,6 +51,16 @@
 		// get show
 		function _getShow() {			
 			vm.show = _show; // resolved as _show at routing state, TMDbTV.get( { id: $routeParams.showId } );
+		}
+
+		// get show videos
+		function _getVideos() {
+			TMDbTV.get( { id: $routeParams.showId, endpoint: 'videos' } )
+				.$promise
+				.then( function( response ) {					
+					vm.video = $filter( 'filter' )( response.results, 'Youtube' )[0];
+					vm.pageLoading = false;
+				} );
 		}
 
 		// toggle favorite
@@ -88,6 +104,18 @@
 			}			
 		}
 
+		// toggle video
+		function _toggleVideo() {
+			if( vm.videoVisible ) {
+				vm.youtubePlayer.stopVideo();
+				vm.videoVisible = false;
+			}
+			else {
+				// vm.youtubePlayer.playVideo();
+				vm.videoVisible = true;
+			}
+		}
+
 		// controller initialize
 		function _init() {
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'DetailCtrl' );
@@ -105,6 +133,7 @@
 				}
 			} );
 			vm.getShow();
+			vm.getVideos();
 		}
 
 	}

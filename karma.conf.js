@@ -15,7 +15,12 @@ module.exports = function( config ) {
 			'bower_components/angular-aria/angular-aria.min.js',
 			'bower_components/angular-messages/angular-messages.min.js',
 			'bower_components/angular-material/angular-material.min.js',
+			// vendor :: youtube embed scripts
+			'app/assets/scripts/youtube-iframe_api.js',
+			'bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js',
+			// vendor :: angular mocks
 			'node_modules/angular-mocks/angular-mocks.js',
+			// vendor :: firebase
 			'bower_components/firebase/firebase.js',
 			// app :: firebase initializer
 			'app/assets/scripts/firebase-initialize-app.js',
