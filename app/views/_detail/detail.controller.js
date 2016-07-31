@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'DetailCtrl', DetailCtrl );
 
-	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope' ];
+	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope', '_show' ];
 
 	/**
 	 * Detail controller
 	 */
-	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope ) {
+	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope, _show ) {
 
 		var vm = this;
 
@@ -44,7 +44,7 @@
 
 		// get show
 		function _getShow() {			
-			vm.show = TMDbTV.get( { id: $routeParams.showId } );
+			vm.show = _show; // resolved as _show at routing state, TMDbTV.get( { id: $routeParams.showId } );
 		}
 
 		// toggle favorite
@@ -92,8 +92,12 @@
 		function _init() {
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'DetailCtrl' );
 			vm.appState = OnTheAirUtils.getAppState();
-			$scope.$watch( 'vm.appState.user_favorites', function( newVal, oldVal ) {
-				if( newVal ) {
+			$scope.$watchCollection( 'vm.appState.user_favorites', function( newVal, oldVal ) {
+				if( false === newVal && false === oldVal ) {
+					// skip initial $watch visit
+					return;
+				}
+				else if( newVal ) {
 					vm.favorited = vm.appState.user_favorites[ $routeParams.showId ];
 				}
 				else {

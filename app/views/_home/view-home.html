@@ -5,15 +5,13 @@
 		<h2>
 			<span>Home</span>
 		</h2>
-		<!-- <span flex></span> -->
-		<!-- <md-button class="md-raised" aria-label="do sth">do sth</md-button> -->
 	</div>
 </md-toolbar>
 
-<md-content layout="row" layout-align-gt-xs="center" layout-padding>
-	<md-list flex-gt-xs="50">
+<md-content layout="row" layout-align="center" layout-padding>
+	<md-list flex-gt-xs="45">
 		<md-list-item ng-repeat="show in vm.shows.results">
-			<md-card>
+			<md-card flex="grow">
 				<img ng-src="http://image.tmdb.org/t/p/w300{{show.backdrop_path}}" class="md-card-image" alt="{{show.name}}" title="{{show.name}}">
 				<md-card-title>
 					<md-card-title-text>
@@ -25,7 +23,6 @@
 				</md-card-content>
 				<md-card-actions layout="row" layout-align="end center">
 					<md-button class="md-primary" ng-href="/shows/{{show.id}}">DETAIL</md-button>
-					<!-- <md-button class="md-primary md-raised" ng-href="/shows/{{show.id}}/pair">PAIR</md-button> -->
 				</md-card-actions>
 			</md-card>
 		</md-list-item>

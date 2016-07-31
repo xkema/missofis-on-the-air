@@ -21,6 +21,7 @@
 			.onAuthStateChanged( function( user ) {
 
 				OnTheAirUtils.setAppState( 'user', user );
+				$rootScope.$apply();
 
 				if( user ) {
 					OnTheAirFirebaseDatabase

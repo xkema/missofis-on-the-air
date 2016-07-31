@@ -72,7 +72,7 @@ module.exports = function( config ) {
 			// app views :: detail
 			'app/views/_detail/detail.controller.js',
 			'app/views/_detail/detail.controller.spec.js',
-			// app views :: login
+			// app views :: welcome
 			'app/views/_welcome/welcome.controller.js',
 			'app/views/_welcome/welcome.controller.spec.js',
 			// app views :: pair

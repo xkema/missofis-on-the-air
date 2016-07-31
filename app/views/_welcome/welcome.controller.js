@@ -1,5 +1,5 @@
 /**
- * Login controller
+ * Welcome controller
  */
 (function () {
 
@@ -7,14 +7,14 @@
 
 	angular
 		.module( 'com.missofis.ontheair' )
-		.controller( 'LoginCtrl', LoginCtrl );
+		.controller( 'WelcomeCtrl', WelcomeCtrl );
 
-	LoginCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$location', '$mdToast' ];
+	WelcomeCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$location', '$mdToast' ];
 
 	/**
-	 * Login controller
+	 * Welcome controller
 	 */
-	function LoginCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $location, $mdToast ) {
+	function WelcomeCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $location, $mdToast ) {
 
 		var vm = this;
 
@@ -88,7 +88,7 @@
 
 		// controller initialize
 		function _init() {
-			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'LoginCtrl' );
+			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'WelcomeCtrl' );
 			vm.appState = OnTheAirUtils.getAppState();
 		}
 

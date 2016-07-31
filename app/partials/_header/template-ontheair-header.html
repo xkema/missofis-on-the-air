@@ -1,24 +1,9 @@
 <header class="ota-header" layout="row" layout-align="none center">
-	<!--
-	<nav>
-		<a href="/">home</a>
-		<a href="/shows">error</a>
-		<a href="/welcome">login</a>
-	</nav>
-	-->
-	<!--
-	<form ng-submit="vm.logoutUser()">		
-		<div>
-			<button type="submit">logout</button>
-		</div>
-	</form>
-	-->
-
 	<md-button href="/" class="md-icon-button" aria-label="Home" title="Home">
 		<md-icon>home</md-icon>
 	</md-button>
 	<span flex></span>
-	<md-button ng-show="!vm.appState.user" href="/welcome" aria-label="login">Login</md-button>
+	<md-button ng-show="!vm.appState.user" href="/welcome" aria-label="login">Login/Register</md-button>
 	<md-menu md-position-mode="target-right target" md-offset="-10 10" ng-show="vm.appState.user">
 		<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
 			<md-icon>more_vert</md-icon>
@@ -63,5 +48,8 @@
 		background-color: #f9f9f9;
 		padding-top: 10px;
 		padding-bottom: 10px;
+	}
+	.ota-invisible {
+		visibility: hidden;
 	}
 </style>

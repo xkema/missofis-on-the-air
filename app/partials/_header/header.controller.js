@@ -54,8 +54,8 @@
 			OnTheAirFirebaseAuth
 				.logout()
 				.then( function( response ) {
-					$mdToast.showSimple( 'See u later!' );					
-					$location.path( '/welcome' );
+					$mdToast.showSimple( 'See u later!' );
+					// $location.path( '/welcome' );
 				}, function( error ) {
 					$log.debug( error );
 				} );

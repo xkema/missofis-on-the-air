@@ -33,7 +33,12 @@
 			.when( '/shows/:showId', {
 				templateUrl: 'views/_detail/view-detail.html',
 				controller: 'DetailCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				resolve: {
+					_show: [ 'TMDbTV', '$route', function( TMDbTV, $route ) {
+						return TMDbTV.get( { id: $route.current.params.showId } );
+					} ]
+				}
 			} )
 			.when( '/shows/:showId/pair', {
 				templateUrl: 'views/_pair/view-pair.html',

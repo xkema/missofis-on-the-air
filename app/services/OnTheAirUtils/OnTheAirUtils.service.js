@@ -17,10 +17,12 @@
 	 */
 	function OnTheAirUtils() {
 
+		// initial values set to "false" instead of "null" to seperate user logged out action from initial app state
+		// helps with $watch'ers in controllers
 		var _appState = {
 
-			user: null,
-			user_favorites: null
+			user: false,
+			user_favorites: false
 
 		};
 

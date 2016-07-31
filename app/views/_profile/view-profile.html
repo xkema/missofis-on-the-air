@@ -5,8 +5,11 @@
 		<h2>
 			<span>Profile</span>
 		</h2>
+		<span flex></span>
 	</div>
 </md-toolbar>
+
+<md-progress-linear md-mode="indeterminate" class="md-accent" ng-class="{'ota-invisible': !vm.pageLoading}"></md-progress-linear>
 
 <md-content layout="column" layout-align="center">
 	<!-- profile data -->
@@ -31,7 +34,7 @@
 		</md-card>
 	</div>
 	<!-- favorites -->
-	<md-subheader class="md-primary">Favorites</md-subheader>
+	<md-subheader class="md-primary" ng-if="vm.favorites">Favorites</md-subheader>
 	<div layout="row" layout-align="start start">
 		<div flex="90">
 			<md-button ng-href="/shows/{{id}}" ng-repeat="(id, name) in vm.favorites">
@@ -53,8 +56,8 @@
 				<label>Biography</label>
 				<textarea ng-model="vm.profile.biography" name="biography" rows="5" md-maxlength="150"></textarea>
 			</md-input-container>
-			<md-switch class="md-accent" ng-model="vm.profile.collector" aria-label="Enable data collector!" name="collector">
-				<small>Enable Data Collecting<!--  - help collecting public data for new features --></small>
+			<md-switch class="md-accent" ng-model="vm.profile.collector" aria-label="Help with Collecting Data" name="collector">
+				<small>Help with Collecting Data<!--  - help collecting public data for new features --></small>
 			</md-switch>
 			<md-input-container layout="row" layout-align="end center">
 				<md-button type="submit" class="md-primary md-raised" ng-disabled="!formUpdateProfile.$dirty">Save Settings</md-button>
