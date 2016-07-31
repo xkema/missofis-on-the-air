@@ -47,7 +47,7 @@
 			} )
 			.when( '/welcome', {
 				templateUrl: 'views/_welcome/view-welcome.html',
-				controller: 'LoginCtrl',
+				controller: 'WelcomeCtrl',
 				controllerAs: 'vm'
 			} )
 			.when( '/profile/:userId', {
