@@ -19,7 +19,25 @@
 	</md-button>
 	<span flex></span>
 	<md-button ng-show="!vm.appState.user" href="/login" aria-label="login">Login</md-button>
-	<md-button ng-show="vm.appState.user" ng-click="vm.logoutUser()" aria-label="logout">Logout</md-button>	
+	<md-menu md-position-mode="target-right target" md-offset="-10 10" ng-show="vm.appState.user">
+		<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+			<md-icon>more_vert</md-icon>
+		</md-button>
+		<md-menu-content width="3">
+			<md-menu-item>
+				<md-button flex ng-click="vm.redirectToProfile()">
+					<md-icon>person</md-icon>
+					<span>Profile</span>
+				</md-button>
+			</md-menu-item>
+			<md-menu-item>
+				<md-button flex ng-click="vm.logoutUser()" aria-label="logout">
+					<md-icon>exit_to_app</md-icon>
+					<span>Logout</span>
+				</md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
 </header>
 
 
@@ -39,7 +57,7 @@
 		overflow: hidden;
 	}
 	#ontheair-app-wrapper {
-		overflow-y: auto;
+		overflow-y: scroll;
 	}
 	.ota-header {
 		background-color: #f9f9f9;

@@ -9,12 +9,12 @@
 		.module( 'com.missofis.OnTheAirFirebase' )
 		.run( runApp );
 
-	runApp.$inject = [ '$log', 'OnTheAirUtils', '$rootScope', 'OnTheAirFirebaseDatabase' ];
+	runApp.$inject = [ '$log', 'OnTheAirUtils', '$rootScope', 'OnTheAirFirebaseDatabase', 'OnTheAirFirebaseUser', '$location' ];
 
 	/**
 	 * Application main run block
 	 */
-	function runApp( $log, OnTheAirUtils, $rootScope, OnTheAirFirebaseDatabase ) {
+	function runApp( $log, OnTheAirUtils, $rootScope, OnTheAirFirebaseDatabase, OnTheAirFirebaseUser, $location ) {
 
 		firebase
 			.auth()
@@ -33,9 +33,8 @@
 				else {
 					OnTheAirUtils.setAppState( 'user_favorites', null );
 					$rootScope.$apply();
+					$location.path( '/login' );
 				}
-
-				// $rootScope.$apply();
 
 			}, function( error ) {
 

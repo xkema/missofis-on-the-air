@@ -54,6 +54,10 @@ module.exports = function( config ) {
 			'app/services/OnTheAirFirebase/Database/OnTheAirFirebase.Database.module.js',
 			'app/services/OnTheAirFirebase/Database/OnTheAirFirebase.Database.service.js',
 			'app/services/OnTheAirFirebase/Database/OnTheAirFirebase.Database.service.spec.js',
+			// app service :: Firebase User module
+			'app/services/OnTheAirFirebase/User/OnTheAirFirebase.User.module.js',
+			'app/services/OnTheAirFirebase/User/OnTheAirFirebase.User.service.js',
+			'app/services/OnTheAirFirebase/User/OnTheAirFirebase.User.service.spec.js',
 			// partials :: header
 			'app/partials/_header/header.directive.js',
 			'app/partials/_header/header.controller.js',

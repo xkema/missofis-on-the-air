@@ -1,0 +1,52 @@
+<!-- view :: profile -->
+
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Profile</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<md-content layout="column" layout-align="center">
+	<md-subheader class="md-primary">User</md-subheader>
+	<div flex="90" flex-gt-xs="70" layout-padding>
+		<!-- profile -->
+		<md-card>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">{{vm.profile.displayName || '...'}}</span>
+					<span class="md-subhead">{{vm.profile.biography || '*'}}</span>
+					<span class="md-subhead" ng-if="vm.profile.collector" >Collector</span>
+				</md-card-title-text>
+				<!--
+				<md-card-title-media>
+					<div class="md-media-sm">
+						<img src="https://placeholdit.imgix.net/~text?txtsize=16&amp;txt=%2A&amp;w=64&amp;h=64&amp;txttrack=0" alt="">
+					</div>
+				</md-card-title-media>
+				-->
+			</md-card-title>			
+		</md-card>
+	</div>
+	<md-subheader class="md-primary" ng-show="vm.ownProfile">Settings</md-subheader>
+	<div layout="row" layout-align="center start" ng-show="vm.ownProfile">
+		<!-- settings -->
+		<form flex="90" ng-submit="vm.updateProfile()" name="formUpdateProfile">			
+			<md-input-container class="md-block">
+				<label>Display Name</label>
+				<input type="text" ng-model="vm.profile.displayName" name="name" md-maxlength="50">
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Biography</label>
+				<textarea ng-model="vm.profile.biography" name="biography" rows="5" md-maxlength="150"></textarea>
+			</md-input-container>
+			<md-switch class="md-accent" ng-model="vm.profile.collector" aria-label="Enable data collector!" name="collector">
+				<small>Enable Data Collecting<!--  - help collecting public data for new features --></small>
+			</md-switch>
+			<md-input-container layout="row" layout-align="end center">
+				<md-button type="submit" class="md-primary md-raised" ng-disabled="!formUpdateProfile.$dirty">Save Settings</md-button>
+			</md-input-container>
+		</form>
+	</div>
+</md-content>

@@ -45,6 +45,11 @@
 				controller: 'LoginCtrl',
 				controllerAs: 'vm'
 			} )
+			.when( '/profile/:userId', {
+				templateUrl: 'views/_profile/view-profile.html',
+				controller: 'ProfileCtrl',
+				controllerAs: 'vm'
+			} )
 			.otherwise( {
 				templateUrl: 'views/_error/view-error.html',
 				redirectTo: '/404'

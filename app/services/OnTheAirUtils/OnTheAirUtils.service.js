@@ -27,7 +27,8 @@
 		return {
 
 			getAppState: _getAppState,
-			setAppState: _setAppState
+			setAppState: _setAppState,
+			trimObject: _trimObject
 
 		};
 
@@ -58,6 +59,25 @@
 
 			_appState[ target ] = data;
 
+		}
+
+		/**
+		 * Trim objects to save space in firebase database
+		 * 
+		 * @param object item
+		 */
+		function _trimObject( item ) {
+		
+			for( var name in item ) {
+
+				if( !item[ name ] ) {
+					delete item[ name ];
+				}
+
+			}
+
+			return item;
+		
 		}
 		
 	}
