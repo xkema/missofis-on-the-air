@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'ProfileCtrl', ProfileCtrl );
 
-	ProfileCtrl.$inject = [ '$log', 'OnTheAirUtils', 'OnTheAirFirebaseUser', '$scope', '$mdToast', '$routeParams', 'OnTheAirFirebaseDatabase' ];
+	ProfileCtrl.$inject = [ '$log', 'OnTheAirUtils', 'OnTheAirFirebaseUser', '$scope', '$mdToast', '$routeParams', 'OnTheAirFirebaseDatabase', '$mdDialog', '$location' ];
 
 	/**
 	 * Profile controller
 	 */
-	function ProfileCtrl( $log, OnTheAirUtils, OnTheAirFirebaseUser, $scope, $mdToast, $routeParams, OnTheAirFirebaseDatabase ) {
+	function ProfileCtrl( $log, OnTheAirUtils, OnTheAirFirebaseUser, $scope, $mdToast, $routeParams, OnTheAirFirebaseDatabase, $mdDialog, $location ) {
 
 		var vm = this;
 
@@ -49,6 +49,21 @@
 			$scope.$watch( 'vm.appState.user', function( newVal, oldVal ) {
 				if( newVal ) {
 					vm.ownProfile = $routeParams.userId === newVal.uid ? true : false;					
+				}
+				else {
+					$mdDialog
+						.show( $mdDialog.confirm( {
+							title: 'Uppsiee!',
+							textContent: 'You should "login" to see any user\'s profile.',
+							ok: 'Login',
+							cancel: 'no thanks'
+						} ) )
+						.then( function() {
+							$location.path( '/welcome' );
+						}, function() {
+							$mdToast.showSimple( 'Maybe later?' );
+							$location.path( '/' );
+						} );
 				}
 			} );
 			OnTheAirFirebaseUser
