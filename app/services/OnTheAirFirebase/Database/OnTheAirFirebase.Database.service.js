@@ -39,7 +39,7 @@
 		 * @param 
 		 * @return
 		 */
-		function _favorite( userId, movieId ) {
+		function _favorite( userId, movieId, movieName ) {
 
 			var _ref = firebase
 				.database()
@@ -49,7 +49,7 @@
 				.once( 'value' )
 				.then( function( snapshot ) {
 					if( !snapshot.child( userId ).child( movieId ).val() ) {
-						return _ref.child( userId ).child( movieId ).set( true );
+						return _ref.child( userId ).child( movieId ).set( movieName );
 					}
 				} );
 

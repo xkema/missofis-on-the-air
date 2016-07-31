@@ -75,7 +75,7 @@
 			}
 			else {
 				OnTheAirFirebaseDatabase
-					.favorite( vm.appState.user.uid, $routeParams.showId )
+					.favorite( vm.appState.user.uid, $routeParams.showId, vm.show.name )
 					.then( function() {
 						$scope.$apply( function() {
 							vm.favorited = true;

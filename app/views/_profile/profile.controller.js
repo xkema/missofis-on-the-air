@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'ProfileCtrl', ProfileCtrl );
 
-	ProfileCtrl.$inject = [ '$log', 'OnTheAirUtils', 'OnTheAirFirebaseUser', '$scope', '$mdToast', '$routeParams' ];
+	ProfileCtrl.$inject = [ '$log', 'OnTheAirUtils', 'OnTheAirFirebaseUser', '$scope', '$mdToast', '$routeParams', 'OnTheAirFirebaseDatabase' ];
 
 	/**
 	 * Profile controller
 	 */
-	function ProfileCtrl( $log, OnTheAirUtils, OnTheAirFirebaseUser, $scope, $mdToast, $routeParams ) {
+	function ProfileCtrl( $log, OnTheAirUtils, OnTheAirFirebaseUser, $scope, $mdToast, $routeParams, OnTheAirFirebaseDatabase ) {
 
 		var vm = this;
 
@@ -29,6 +29,7 @@
 		vm.profile = null;
 		vm.updateProfile = _updateProfile;
 		vm.ownProfile = false;
+		vm.favorites = null;
 
 		// controller api
 
@@ -56,6 +57,14 @@
 					$scope.$apply( function() {
 						vm.profile = response;
 					} );
+				} );
+			OnTheAirFirebaseDatabase
+				.getUserFavorites( $routeParams.userId )
+				.then( function( response ) {
+					// OnTheAirUtils.setAppState( 'user_favorites', response );
+					// $rootScope.$apply();
+					// debugger;
+					vm.favorites = response;
 				} );
 		}
 

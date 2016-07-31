@@ -9,6 +9,7 @@
 </md-toolbar>
 
 <md-content layout="column" layout-align="center">
+	<!-- profile data -->
 	<md-subheader class="md-primary">User</md-subheader>
 	<div flex="90" flex-gt-xs="70" layout-padding>
 		<!-- profile -->
@@ -29,10 +30,21 @@
 			</md-card-title>			
 		</md-card>
 	</div>
+	<!-- favorites -->
+	<md-subheader class="md-primary">Favorites</md-subheader>
+	<div layout="row" layout-align="start start">
+		<div flex="90">
+			<md-button ng-href="/shows/{{id}}" ng-repeat="(id, name) in vm.favorites">
+				<md-icon>link</md-icon>
+				{{name}} 
+			</md-button>
+		</div>
+	</div>	
+	<!-- settings -->
 	<md-subheader class="md-primary" ng-show="vm.ownProfile">Settings</md-subheader>
 	<div layout="row" layout-align="center start" ng-show="vm.ownProfile">
 		<!-- settings -->
-		<form flex="90" ng-submit="vm.updateProfile()" name="formUpdateProfile">			
+		<form flex="90" ng-submit="vm.updateProfile()" name="formUpdateProfile">
 			<md-input-container class="md-block">
 				<label>Display Name</label>
 				<input type="text" ng-model="vm.profile.displayName" name="name" md-maxlength="50">
