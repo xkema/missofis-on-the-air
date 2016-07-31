@@ -58,7 +58,7 @@
 						cancel: 'no thanks'
 					} ) )
 					.then( function() {
-						$location.path( '/login' );
+						$location.path( '/welcome' );
 					}, function() {
 						$mdToast.showSimple( 'Maybe later?' );
 					} );

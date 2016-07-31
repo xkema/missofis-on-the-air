@@ -40,8 +40,8 @@
 				controller: 'PairCtrl',
 				controllerAs: 'vm'
 			} )
-			.when( '/login', {
-				templateUrl: 'views/_login/view-login.html',
+			.when( '/welcome', {
+				templateUrl: 'views/_welcome/view-welcome.html',
 				controller: 'LoginCtrl',
 				controllerAs: 'vm'
 			} )

@@ -33,7 +33,6 @@
 				else {
 					OnTheAirUtils.setAppState( 'user_favorites', null );
 					$rootScope.$apply();
-					$location.path( '/login' );
 				}
 
 			}, function( error ) {

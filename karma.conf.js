@@ -73,8 +73,8 @@ module.exports = function( config ) {
 			'app/views/_detail/detail.controller.js',
 			'app/views/_detail/detail.controller.spec.js',
 			// app views :: login
-			'app/views/_login/login.controller.js',
-			'app/views/_login/login.controller.spec.js',
+			'app/views/_welcome/welcome.controller.js',
+			'app/views/_welcome/welcome.controller.spec.js',
 			// app views :: pair
 			'app/views/_pair/pair.controller.js',
 			'app/views/_pair/pair.controller.spec.js'
