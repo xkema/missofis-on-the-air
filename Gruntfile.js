@@ -32,6 +32,8 @@ module.exports = function( grunt ) {
 				bsFiles: {
 					src: [
 						'app/index.html',
+
+						'test/SpecRunner.html',
 						
 						'app/views/_*/*.controller?(.spec).js',
 						'app/partials/_*/*.(controller|directive)?(.spec).js',
@@ -51,8 +53,10 @@ module.exports = function( grunt ) {
 						baseDir: [ 'app/' ],
 						directory: false,
 						routes: {
+							'/node_modules': 'node_modules',
 							'/bower_components': 'bower_components',
-							'/test': 'test'
+							'/test': 'test',
+							'/karma.conf.js': 'karma.conf.js'
 						},
 						middleware: _historyApiFallback()
 					},

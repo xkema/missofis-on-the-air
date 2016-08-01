@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Jasmine Spec Runner v2.4.1</title>
+
+	<link rel="shortcut icon" type="image/png" href="../node_modules/jasmine-core/images/jasmine_favicon.png">
+	<link rel="stylesheet" href="../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+
+	<!-- jasmine assets -->
+
+	<script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+	<script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+	<script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+
+	<!-- sources & specs -->
+
+	<!-- steal files array from karma config -->
+	<script type="text/javascript">
+		var module = {};
+		var config = {
+			files: [],
+			set: function( settings ) {
+				this.files = settings.files;
+			}
+		};
+	</script>
+	<script src="../karma.conf.js"></script>
+	<script type="text/javascript">
+		module.exports( config );
+		var configFiles = config.files;
+		module = undefined;		
+	</script>
+	<!-- create scripts dynamicly -->
+	<script type="text/javascript">
+		configFiles.forEach( function( currentValue ) {
+		var s = document.createElement( 'script' );
+		var _currentValue = currentValue.replace( /(bower_components|node_modules|test)\//g, '../$1/' );
+			_currentValue = _currentValue.replace( 'app/', '../' );
+		s.async = false;
+		s.setAttribute( 'src', _currentValue );
+		document.head.appendChild( s );
+	} );
+	</script>
+
+</head>
+
+<body>
+</body>
+</html>
