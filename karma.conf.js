@@ -24,6 +24,8 @@ module.exports = function( config ) {
 			'bower_components/firebase/firebase.js',
 			// app :: firebase initializer
 			'app/assets/scripts/firebase-initialize-app.js',
+			// vendor :: mockfirebase firebase mocks
+			'node_modules/mockfirebase/browser/mockfirebase.js',
 			// app test :: test helpers
 			'test/mock-helpers/mock-helpers.js',
 			// app :: main module

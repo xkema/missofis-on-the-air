@@ -41,28 +41,19 @@
 		----------------------------------------------------------------
 		*/
 
-		// login user
-		/*
-		function _loginUser() {
-			OnTheAirFirebaseAuth
-				.login( vm.form.login.email, vm.form.login.password );
-		}
-		*/
-
 		// logout user
 		function _logoutUser() {
-			OnTheAirFirebaseAuth
+			return OnTheAirFirebaseAuth
 				.logout()
 				.then( function( response ) {
 					$mdToast.showSimple( 'See u later!' );
-					// $location.path( '/welcome' );
 				}, function( error ) {
 					$log.debug( error );
 				} );
 		}
 
 		// redirect to profile page (helps md-menu auto closing)
-		function _redirectToProfile() {		
+		function _redirectToProfile() {
 			$location.path( '/profile/' + vm.appState.user.uid );
 		}
 
