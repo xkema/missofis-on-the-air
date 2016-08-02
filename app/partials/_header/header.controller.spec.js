@@ -49,6 +49,26 @@ describe( 'UNIT ::  Controller Test : HeaderCtrl', function() {
 			} );
 		} );
 
+		it( 'should show toaster message after logout (alternative test)', function() {
+			// there is no need to return `return OnTheAirFirebaseAuth.logout().then(...)` promise from
+			// `OnTheAirHeaderCtrl.logoutUser()` controller for this scenario
+			spyOn( $mdToast, 'showSimple' );
+			// mock logout service of firebase via OnTheAirFirebaseAuth but try an auto resolving mock `then() caller` promise handling
+			spyOn( OnTheAirFirebaseAuth, 'logout' ).and.callFake( function() {
+				return {
+					then: function( callback ) {
+						// this callback method is the anonymous __callback__ method in
+						// `OnTheAirFirebaseAuth.logout().then( __callback__ )` method in OnTheAirHeaderCtrl.
+						// so, __callback__ is equal to `function ( response ) { $mdToast.showSimple( 'See u later!' ); }`
+						// calling `callback()` is the caller for `$mdToast.showSimple( 'See u later!' );` which is our expectation in this test
+						callback();
+					}
+				};
+			} );
+			OnTheAirHeaderCtrl.logoutUser();
+			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later!' );
+		} );
+
 		it( 'should redirect to current user\'s profile page wit `vm.appState.user.uid`', function() {
 			spyOn( $location, 'path' );
 			var _userData = MockHelpers.getFirebaseUserData();
