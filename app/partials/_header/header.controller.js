@@ -28,7 +28,6 @@
 		vm.appState = null;
 
 		// controller api
-		// vm.loginUser = _loginUser;
 		vm.logoutUser = _logoutUser;
 		vm.redirectToProfile = _redirectToProfile;
 
@@ -41,7 +40,7 @@
 		----------------------------------------------------------------
 		*/
 
-		// logout user
+		// logout user (returns result promise for tests)
 		function _logoutUser() {
 			return OnTheAirFirebaseAuth
 				.logout()
