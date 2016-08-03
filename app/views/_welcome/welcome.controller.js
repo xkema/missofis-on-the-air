@@ -32,8 +32,8 @@
 				passwordRepeat: ''
 			},
 			login: {
-				email: '',
-				password: ''
+				email: '', // demo user: john@missofis.com
+				password: '' // demo password: allyouneedislove
 			}
 		};
 		vm.appState = null;

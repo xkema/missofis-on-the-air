@@ -45,7 +45,7 @@
 			return OnTheAirFirebaseAuth
 				.logout()
 				.then( function( response ) {
-					$mdToast.showSimple( 'See u later!' );
+					$mdToast.showSimple( 'See u later "' + vm.appState.user.email + '"' );
 				}, function( error ) {
 					$log.debug( error );
 				} );

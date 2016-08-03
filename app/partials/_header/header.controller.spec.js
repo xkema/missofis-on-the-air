@@ -38,22 +38,9 @@ describe( ':: OnTheAirHeaderCtrl', function() {
 			expect( OnTheAirHeaderCtrl.appState.user ).toBeNull();
 		} );
 
-		it( 'should show toaster message after logout', function( done ) {
-			spyOn( $mdToast, 'showSimple' );
-			// mock logout service of firebase via OnTheAirFirebaseAuth
-			spyOn( OnTheAirFirebaseAuth, 'logout' ).and.callFake( function() {
-				return new firebase.Promise( function( resolve, reject ) {
-					resolve( 'dummy resolved object' ); // does nothing with logout test, dummy return
-				} );
-			} );
-			// mock logoutUser() controller method and done() async to vatch expectation
-			OnTheAirHeaderCtrl.logoutUser().then( function() {
-				expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later!' );
-				done();
-			} );
-		} );
-
-		it( 'should show toaster message after logout (alternative test)', function() {
+		it( 'should show toaster message after logout', function() {
+			var _userData = MockHelpers.getFirebaseUserData();
+			OnTheAirUtils.setAppState( 'user', _userData );
 			// there is no need to return `return OnTheAirFirebaseAuth.logout().then(...)` promise from
 			// `OnTheAirHeaderCtrl.logoutUser()` controller for this scenario
 			spyOn( $mdToast, 'showSimple' );
@@ -70,13 +57,31 @@ describe( ':: OnTheAirHeaderCtrl', function() {
 				};
 			} );
 			OnTheAirHeaderCtrl.logoutUser();
-			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later!' );
+			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later "' + _userData.email + '"' );
+		} );
+
+		xit( 'should show toaster message after logout (alternative test)', function( done ) {
+			var _userData = MockHelpers.getFirebaseUserData();
+			OnTheAirUtils.setAppState( 'user', _userData );
+			spyOn( $mdToast, 'showSimple' );
+			// mock logout service of firebase via OnTheAirFirebaseAuth
+			spyOn( OnTheAirFirebaseAuth, 'logout' ).and.callFake( function() {
+				return new firebase.Promise( function( resolve, reject ) {
+					resolve( 'dummy resolved object' ); // does nothing with logout test, dummy return
+				} );
+			} );
+			// mock logoutUser() controller method and done() async to vatch expectation
+			OnTheAirHeaderCtrl.logoutUser().then( function() {				
+				// todo :: debug this method later
+				expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later "' + _userData.email + '"' );
+				done();
+			} );
 		} );
 
 		it( 'should redirect to current user\'s profile page with `vm.appState.user.uid`', function() {
-			spyOn( $location, 'path' );
 			var _userData = MockHelpers.getFirebaseUserData();
 			OnTheAirUtils.setAppState( 'user', _userData );
+			spyOn( $location, 'path' );
 			OnTheAirHeaderCtrl.redirectToProfile();
 			expect( $location.path ).toHaveBeenCalledWith( '/profile/' + _userData.uid );
 		} );
