@@ -1,4 +1,4 @@
-describe( 'UNIT ::  Controller Test : HeaderCtrl', function() {
+describe( ':: OnTheAirHeaderCtrl', function() {
 
 	'use strict';
 
@@ -17,11 +17,15 @@ describe( 'UNIT ::  Controller Test : HeaderCtrl', function() {
 		} );
 	} );
 
-	describe( 'OnTheAirHeaderCtrl', function() {
+	describe( 'controller initialization', function() {
 
 		it( 'should log controller initialization message ("hello world!" test)', function() {
 			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'OnTheAirHeaderCtrl' ] );
 		} );
+
+	} );
+
+	describe( 'controller behaviour', function() {
 
 		it( 'should set user data to "null" after a "logoutUser()" call', function() {
 			var _userData = MockHelpers.getFirebaseUserData();
@@ -69,7 +73,7 @@ describe( 'UNIT ::  Controller Test : HeaderCtrl', function() {
 			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later!' );
 		} );
 
-		it( 'should redirect to current user\'s profile page wit `vm.appState.user.uid`', function() {
+		it( 'should redirect to current user\'s profile page with `vm.appState.user.uid`', function() {
 			spyOn( $location, 'path' );
 			var _userData = MockHelpers.getFirebaseUserData();
 			OnTheAirUtils.setAppState( 'user', _userData );

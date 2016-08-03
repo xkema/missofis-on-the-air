@@ -1,4 +1,4 @@
-describe( 'UNIT :: ProfileCtrl', function() {
+describe( ':: ProfileCtrl', function() {
 
 	'use strict';
 	

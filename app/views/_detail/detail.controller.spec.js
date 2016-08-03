@@ -1,4 +1,4 @@
-describe( 'UNIT ::  Controller Test : DetailCtrl', function() {
+describe( ':: DetailCtrl', function() {
 
 	'use strict';
 	
@@ -16,7 +16,7 @@ describe( 'UNIT ::  Controller Test : DetailCtrl', function() {
 		} );
 	} );
 
-	describe( 'DetailCtrl :: Controller Creation', function() {
+	describe( 'controller initilaization', function() {
 
 		it( 'should define "show" property and set it to "null"', function() {
 			expect( controller.show ).toBeNull();
@@ -28,7 +28,7 @@ describe( 'UNIT ::  Controller Test : DetailCtrl', function() {
 		
 	} );
 
-	describe( 'DetailCtrl :: Controller XHR Related', function() {
+	describe( 'xhr', function() {
 
 		var $httpBackend;
 

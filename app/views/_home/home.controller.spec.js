@@ -1,4 +1,4 @@
-describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
+describe( ':: HomeCtrl', function() {
 
 	'use strict';
 
@@ -17,27 +17,27 @@ describe( 'UNIT ::  Controller Test : HomeCtrl', function() {
 		jasmine.addCustomEqualityTester( angular.equals ); // @see 
 	} );
 
-	describe( 'HomeCtrl', function() {
+	describe( 'controller initialization', function() {
 
 		it( 'should log controller initialization message ("hello world!" test)', function() {
 			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' ] );
 		} );
 
-		describe( 'Sync XHR calls', function() {
+	} );
 
-			beforeEach( function() {
-				$httpBackend
-					.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air', false ) )
-					.respond( MockHelpers.getShowsMockData() );
-			} );
+	describe( 'sync xhr calls', function() {
 
-			it( 'should fill "shows" object with getShows() call', function() {
-				$httpBackend.flush();
-				expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
-			} );
-		
+		beforeEach( function() {
+			$httpBackend
+				.expect( 'GET', TMDbUtils.queryBuilder( 'tv', false, 'on_the_air', false ) )
+				.respond( MockHelpers.getShowsMockData() );
 		} );
 
+		it( 'should fill "shows" object with getShows() call', function() {
+			$httpBackend.flush();
+			expect( HomeCtrl.shows ).toEqual( MockHelpers.getShowsMockData() );
+		} );
+	
 	} );
 
 } );

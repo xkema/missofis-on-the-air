@@ -1,4 +1,4 @@
-describe( 'UNIT ::  TMDb Utils', function() {
+describe( ':: TMDbUtils', function() {
 
 	'use strict';
 	

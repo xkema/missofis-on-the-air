@@ -1,4 +1,4 @@
-describe( 'UNIT :: PairCtrl', function() {
+describe( ':: PairCtrl', function() {
 
 	'use strict';
 	

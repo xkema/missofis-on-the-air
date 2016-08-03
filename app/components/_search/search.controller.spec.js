@@ -1,4 +1,4 @@
-describe( 'UNIT ::  Component Controller Test : SearchCtrl', function() {
+describe( ':: SearchCtrl', function() {
 
 	'use strict';
 
@@ -17,29 +17,29 @@ describe( 'UNIT ::  Component Controller Test : SearchCtrl', function() {
 		jasmine.addCustomEqualityTester( angular.equals );
 	} );
 
-	describe( 'SearchCtrl', function() {
+	describe( 'controller initialization', function() {
 
 		it( 'should log controller initialization message ("hello world!" test)', function() {
 			expect( $log.info.logs ).toContain( [ '$$____ :: CONTROLLER INITIALIZE', 'OnTheAirSearchCtrl' ] );
 		} );
 
-		describe( 'Sync XHR calls', function() {
+	} );
 
-			beforeEach( function() {
-				$httpBackend
-					.expect( 'GET', TMDbUtils.queryBuilder( 'search', false, 'tv', { query: 'leyla' } ) )
-					.respond( MockHelpers.getTvSearchResultsMockData() );
-			} );
+	describe( 'sync xhr calls', function() {
 
-			it( 'should fill "searchResults" object with searchShow() call', function() {
-				SearchCtrl.searchQuery = 'leyla';
-				SearchCtrl.searchShow();
-				$httpBackend.flush();
-				expect( SearchCtrl.searchResult ).toEqual( MockHelpers.getTvSearchResultsMockData() );
-			} );
-		
+		beforeEach( function() {
+			$httpBackend
+				.expect( 'GET', TMDbUtils.queryBuilder( 'search', false, 'tv', { query: 'leyla' } ) )
+				.respond( MockHelpers.getTvSearchResultsMockData() );
 		} );
 
+		it( 'should fill "searchResults" object with searchShow() call', function() {
+			SearchCtrl.searchQuery = 'leyla';
+			SearchCtrl.searchShow();
+			$httpBackend.flush();
+			expect( SearchCtrl.searchResult ).toEqual( MockHelpers.getTvSearchResultsMockData() );
+		} );
+	
 	} );
 
 } );
