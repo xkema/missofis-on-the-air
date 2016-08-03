@@ -27,12 +27,13 @@
 		// controller bindables
 		vm.form = {
 			register: {
-				email: 'at@atmail.com',
-				password: 'eJHStJe8ketqcBmU'
+				email: '',
+				password: '',
+				passwordRepeat: ''
 			},
 			login: {
-				email: 'at@atmail.com',
-				password: 'eJHStJe8ketqcBmU'
+				email: '',
+				password: ''
 			}
 		};
 		vm.appState = null;
@@ -56,8 +57,12 @@
 			OnTheAirFirebaseAuth
 				.register( vm.form.register.email, vm.form.register.password )
 				.then( function( response ) {
+					$mdToast.showSimple( 'You\'re registered! We also logged you in! Happy browsing!' );
+					$location.path( '/' );
 					$log.debug( response );
 				}, function( error ) {
+					// firebase error object structure is { code: 'string', message: 'string' }
+					$mdToast.showSimple( error.message );
 					$log.debug( error );
 				} );
 		}
@@ -71,6 +76,7 @@
 					$location.path( '/' );
 					$log.debug( response );
 				}, function( error ) {
+					$mdToast.showSimple( error.message );
 					$log.debug( error );
 				} );
 		}
