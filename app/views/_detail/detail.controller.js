@@ -95,6 +95,10 @@
 				OnTheAirFirebaseDatabase
 					.favorite( vm.appState.user.uid, $routeParams.showId, vm.show.name )
 					.then( function() {
+						// todo :: check for another solution (initial app set is false, but service returns null. false set needed for $watchCollection below)
+						if( null === vm.appState.user_favorites ) {
+							vm.appState.user_favorites = {};
+						}
 						vm.appState.user_favorites[ $routeParams.showId ] = vm.show.name;
 						$scope.$apply( function() {
 							vm.favorited = true;
