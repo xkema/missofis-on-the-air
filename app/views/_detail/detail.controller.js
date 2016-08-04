@@ -66,8 +66,9 @@
 
 		// set networks for collectors data
 		function _setNetworks() {
+			// `angular.copy( _show.networks )` prevents $$hashKey creation of `vm.show = _show;` assignment.
 			OnTheAirFirebaseDatabase
-				.saveNetworks( vm.show.networks )
+				.saveNetworks( angular.copy( _show.networks ) )
 				.then( function( response ) {
 					// todo :: show toaster message
 					// debugger;
