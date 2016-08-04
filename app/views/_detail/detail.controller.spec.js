@@ -2,30 +2,40 @@ describe( ':: DetailCtrl', function() {
 
 	'use strict';
 	
-	return false;
-
 	// MockHelpers helper script is defined in global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
 
-	var controller;
+	var $rootScope, $controller,
+		DetailCtrl;
 	
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( $controller ) {
-			controller = $controller( 'DetailCtrl' );
+		angular.mock.inject( function( _$controller_, _$rootScope_ ) {
+			$controller = _$controller_; $rootScope = _$rootScope_;
+			DetailCtrl = $controller( 'DetailCtrl', { $scope: $rootScope.$new(), _show: MockHelpers.getShowMockData() } ); // , _show: MockHelpers.getShowMockData()
 		} );
 	} );
 
 	describe( 'controller initilaization', function() {
 
-		it( 'should define "show" property and set it to "null"', function() {
-			expect( controller.show ).toBeNull();
+		xit( 'should define "show" property and set it to "null"', function() {
+			expect( DetailCtrl.show ).toBeNull();
 		} );
 
-		it( 'should define "getShow()" method', function() {
-			expect( controller.getShow ).toBeDefined();
+		xit( 'should define "getShow()" method', function() {
+			expect( DetailCtrl.getShow ).toBeDefined();
 		} );
 		
+	} );
+
+	describe( 'controller behaviour', function() {
+
+		xit( 'should set tv show networks for collectors data', function() {
+			// 
+			DetailCtrl.setNetworks();
+			expect( true ).toBe( false );
+		} );
+
 	} );
 
 	describe( 'xhr', function() {
@@ -38,13 +48,13 @@ describe( ':: DetailCtrl', function() {
 			} );
 		} );
 
-		it( 'should fill "show" object', function() {
+		xit( 'should fill "show" object', function() {
 			var _showMockData = MockHelpers.getShowMockData();
 			$httpBackend
 				.expect( 'GET', 'test/mock-data/get.tv.id.json' )
 				.respond( MockHelpers.getShowMockData() );
 			$httpBackend.flush();
-			expect( controller.show ).toEqual( _showMockData );
+			expect( DetailCtrl.show ).toEqual( _showMockData );
 		} );
 
 	} );

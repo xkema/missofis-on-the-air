@@ -36,6 +36,7 @@
 		// controller api
 		vm.getShow = _getShow;
 		vm.getVideos = _getVideos;
+		vm.setNetworks = _setNetworks;
 		vm.toggleFavorite = _toggleFavorite;
 		vm.toggleVideo = _toggleVideo;
 
@@ -60,6 +61,16 @@
 				.then( function( response ) {					
 					vm.video = $filter( 'filter' )( response.results, 'Youtube' )[0];
 					vm.pageLoading = false;
+				} );
+		}
+
+		// set networks for collectors data
+		function _setNetworks() {
+			OnTheAirFirebaseDatabase
+				.saveNetworks( vm.show.networks )
+				.then( function( response ) {
+					// todo :: show toaster message
+					// debugger;
 				} );
 		}
 
@@ -138,6 +149,7 @@
 			} );
 			vm.getShow();
 			vm.getVideos();
+			vm.setNetworks();
 		}
 
 	}

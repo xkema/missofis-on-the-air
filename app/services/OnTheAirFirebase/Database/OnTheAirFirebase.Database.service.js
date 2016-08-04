@@ -22,7 +22,9 @@
 			//  doSth Service
 			favorite: _favorite,
 			unfavorite: _unfavorite,
-			getUserFavorites: _getUserFavorites
+			saveNetworks: _saveNetworks,
+			getUserFavorites: _getUserFavorites,
+			getNetworks: _getNetworks
 
 		};
 
@@ -79,6 +81,31 @@
 		}
 
 		/**
+		 * Save network data for collector data
+		 * 
+		 * @param
+		 */
+		function _saveNetworks( networks ) {
+
+			var _ref = firebase
+				.database()
+				.ref( 'networks/' );
+
+			return _ref
+				.once( 'value' )
+				.then( function( snapshot ) {
+					// debugger;
+					// var _networks = angular.extend( {}, networks, snapshot.val() );
+					// console.log( snapshot.val(), networks );
+					// if( !snapshot.val() ) {
+					// var _networks = networks.push.apply( networks, snapshot.val() );
+					return _ref.set( networks.concat( snapshot.val() ) );
+					// }
+				} );
+		
+		}
+
+		/**
 		 * Get user favorites
 		 * 
 		 * @param 
@@ -94,6 +121,23 @@
 					return snapshot.val();
 				} );
 
+		}
+
+		/**
+		 * Fetch networks data
+		 * 
+		 * @param
+		 */
+		function _getNetworks() {
+		
+			return firebase
+				.database()
+				.ref( 'networks/' )
+				.once( 'value' )
+				.then( function( snapshot ) {
+					return snapshot.val();
+				} );
+		
 		}
 		
 	}
