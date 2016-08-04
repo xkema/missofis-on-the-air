@@ -22,7 +22,8 @@
 		var _appState = {
 
 			user: false,
-			user_favorites: false
+			user_favorites: false,
+			user_profile: false
 
 		};
 

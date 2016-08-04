@@ -30,9 +30,16 @@
 							OnTheAirUtils.setAppState( 'user_favorites', response );
 							$rootScope.$apply();
 						} );
+					OnTheAirFirebaseUser
+						.getUserProfile( user.uid )
+						.then( function( response ) {
+							OnTheAirUtils.setAppState( 'user_profile', response );
+							$rootScope.$apply();							
+						} );
 				}
 				else {
 					OnTheAirUtils.setAppState( 'user_favorites', null );
+					OnTheAirUtils.setAppState( 'user_profile', null );
 					$rootScope.$apply();
 				}
 

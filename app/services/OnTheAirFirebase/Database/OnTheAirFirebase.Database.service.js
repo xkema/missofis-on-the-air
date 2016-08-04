@@ -91,16 +91,14 @@
 				.database()
 				.ref( 'networks/' );
 
+			// todo :: check if snapshot has alredy have current id
+
 			return _ref
 				.once( 'value' )
 				.then( function( snapshot ) {
-					// debugger;
-					// var _networks = angular.extend( {}, networks, snapshot.val() );
-					// console.log( snapshot.val(), networks );
-					// if( !snapshot.val() ) {
-					// var _networks = networks.push.apply( networks, snapshot.val() );
-					return _ref.set( networks.concat( snapshot.val() ) );
-					// }
+					angular.forEach( networks, function( value, key ) {						
+						return _ref.child( 'tmdb' ).child( value.id ).set( value.name );
+					} );
 				} );
 		
 		}

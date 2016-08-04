@@ -98,6 +98,7 @@
 			var p3 = OnTheAirFirebaseUser
 				.updateProfile( vm.appState.user.uid, OnTheAirUtils.trimObject( vm.profile ) )
 				.then( function() {
+					OnTheAirUtils.setAppState( 'user_profile', vm.profile );
 					$mdToast.showSimple( 'Settings updated!' );
 					$scope.formUpdateProfile.$setPristine();
 				}, function() {

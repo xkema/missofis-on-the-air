@@ -58,7 +58,7 @@
 		function _getVideos() {
 			TMDbTV.get( { id: $routeParams.showId, endpoint: 'videos' } )
 				.$promise
-				.then( function( response ) {					
+				.then( function( response ) {
 					vm.video = $filter( 'filter' )( response.results, 'Youtube' )[0];
 					vm.pageLoading = false;
 				} );
@@ -66,13 +66,14 @@
 
 		// set networks for collectors data
 		function _setNetworks() {
-			// `angular.copy( _show.networks )` prevents $$hashKey creation of `vm.show = _show;` assignment.
-			OnTheAirFirebaseDatabase
-				.saveNetworks( angular.copy( _show.networks ) )
-				.then( function( response ) {
-					// todo :: show toaster message
-					// debugger;
-				} );
+			if( vm.appState.user_profile.collector ) {
+				// `angular.copy( _show.networks )` prevents $$hashKey creation of `vm.show = _show;` assignment.
+				OnTheAirFirebaseDatabase
+					.saveNetworks( angular.copy( _show.networks ) )
+					.then( function( response ) {
+						// todo :: show toaster message
+					} );
+			} 
 		}
 
 		// toggle favorite
@@ -148,9 +149,20 @@
 					vm.favorited = false;
 				}
 			} );
+			$scope.$watchCollection( 'vm.appState.user_profile', function( newVal, oldVal ) {
+				if( false === newVal && false === oldVal ) {
+					// skip initial $watch visit
+					return;
+				}
+				else if( newVal ) {
+					vm.setNetworks();
+				}
+				else {
+					return;
+				}
+			} );
 			vm.getShow();
 			vm.getVideos();
-			vm.setNetworks();
 		}
 
 	}
