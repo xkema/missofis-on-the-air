@@ -96,8 +96,10 @@
 			return _ref
 				.once( 'value' )
 				.then( function( snapshot ) {
-					angular.forEach( networks, function( value, key ) {						
-						return _ref.child( 'tmdb' ).child( value.id ).set( value.name );
+					angular.forEach( networks, function( value, key ) {
+						if( !snapshot.child( 'tmdb' ).val().hasOwnProperty( value.id ) ) {
+							return _ref.child( 'tmdb' ).child( value.id ).set( value.name );
+						}
 					} );
 				} );
 		
