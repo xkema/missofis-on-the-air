@@ -7,7 +7,9 @@ var MockHelpers = ( function() {
 		getShowsMockData: _getShowsMockData,
 		getShowMockData: _getShowMockData,
 		getFirebaseUserData: _getFirebaseUserData,
-		getTvSearchResultsMockData: _getTvSearchResultsMockData
+		getTvSearchResultsMockData: _getTvSearchResultsMockData,
+		getUserFavoritesMockData: _getUserFavoritesMockData,
+		getUserProfileMockData: _getUserProfileMockData
 	};
 
 	/**
@@ -104,33 +106,63 @@ var MockHelpers = ( function() {
 	function _getFirebaseUserData() {
 	
 		return {
-			"uid": "rB9jrITiYreetAL4E9kQQJtSDt03",
+			"uid": "0000000000000000001234567890",
 			"displayName": null,
 			"photoURL": null,
-			"email": "at@atmail.com",
+			"email": "jasminetestmail@missofis.com",
 			"emailVerified": false,
 			"isAnonymous": false,
 			"providerData": [
 				{
-					"uid": "at@atmail.com",
+					"uid": "jasminetestmail@missofis.com",
 					"displayName": null,
 					"photoURL": null,
-					"email": "at@atmail.com",
+					"email": "jasminetestmail@missofis.com",
 					"providerId": "password"
 				}
 			],
-			"apiKey": "AIzaSyAIl0R1GHtUY-afv83sk-UPCYHisZbsYKU",
+			"apiKey": "hgfedcba123456789-abcdefg-ABCDEFGHI0123",
 			"appName": "[DEFAULT]",
 			"authDomain": "untitled-tv-show-feed.firebaseapp.com",
 			"stsTokenManager": {
-				"apiKey": "AIzaSyAIl0R1GHtUY-afv83sk-UPCYHisZbsYKU",
-				"refreshToken": "AJilOCPAQlyZk2rkcGlQCzpCE6qZmNXBTgr8hcDcT1u1F9nZRVYPLhokNEWHNKwA7X14lN-er175LiGDoSNfBcx4Wz-VIdPWMDT-xap1xVRZufFDoNDUXpgG5YUw6elR4jDeJzS25F1MnRadaMRrqqc7g-G2OOvos-3FTuqMwmcMK0RXBESoTIZpjMvVOOhlZt9fKgG5zBL56jWXz4vVGwgKuK-ARbB0Hg",
-				"accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM4ZTNjMzBlZDNjYjgzYTMyMjIxMjM2NjNhMGNkNjRhMTk0MTNhNTYifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vdW50aXRsZWQtdHYtc2hvdy1mZWVkIiwiYXVkIjoidW50aXRsZWQtdHYtc2hvdy1mZWVkIiwiYXV0aF90aW1lIjoxNDY5MjkyNzEwLCJ1c2VyX2lkIjoickI5anJJVGlZcmVldEFMNEU5a1FRSnRTRHQwMyIsInN1YiI6InJCOWpySVRpWXJlZXRBTDRFOWtRUUp0U0R0MDMiLCJpYXQiOjE0NjkyOTI3MTAsImV4cCI6MTQ2OTI5NjMxMCwiZW1haWwiOiJhdEBhdG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImF0QGF0bWFpbC5jb20iLCJhdEBhdG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.uyf1ORWrXNDIYrU2EYrC4rePxxKDPW1otvv23GJ3bORGXOUjdcASXAMxTuzMggEGUHzxCgkqcebSQQn_Wz6fQMl8HiaglpsjEMgR3F0RwxWIk_K-CWu_7HPj2XqiptmxhirPWizQ3Xq2Vpy1rVIMrGdHTJfnckD2d4vMVgw3wFn1fPS5NN9ltjTeZs8JkBURjQrwVkIQsGsLAxVIK3o2f87gxQfMtxmfa-gT68jfOOA6H-Vngvy3XGOuQDvfG2IQ9lLDwNM9FapNk5RvJVG2NimrVpN6IcRtx5y5vekjsu44dgcY9BQHDPwaj7dXVitDQAyz-mqIRhMRdlZlkLCCMA",
-				"expirationTime": 1469296326635
+				"apiKey": "hgfedcba123456789-abcdefg-ABCDEFGHI0123",
+				"refreshToken": "00000000001234567890",
+				"accessToken": "abcdefghijklmnoprstuxwyz",
+				"expirationTime": 1479398926635
 			},
 			"redirectEventId": null
 		};
 	
+	}
+
+	/**
+	 * Returns user favorites mock data for appState
+	 */
+	function _getUserFavoritesMockData() {
+
+		return {
+			"12345": "Some TV Show",
+			"67890": "Another TV Show",
+			"00001": "Very Good TV Show",
+			"99999": "Game of Melons",
+			"44444": "Fart Matter",
+			"00008": "Ms. Robot",
+			"77777": "Harrison Break"
+		};
+
+	}
+
+	/**
+	 * Returns user favorites mock data for appState
+	 */
+	function _getUserProfileMockData() {
+
+		return {
+			"biography": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, voluptatem.",
+			"collector": true,
+			"displayName": "Jane Doe"
+		};
+
 	}
 
 } )();

@@ -57,18 +57,13 @@
 
 		// get shows
 		function _getShows() {
-
 			vm.shows = TMDbTV.get( { endpoint: 'on_the_air' } );
-
 		}
 
 		// controller initialize
 		function _init() {
-
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'HomeCtrl' );
-
 			vm.getShows();
-
 		}
 
 	}
