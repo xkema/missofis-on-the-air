@@ -40,9 +40,9 @@
 					} ]
 				}
 			} )
-			.when( '/shows/:showId/pair', {
-				templateUrl: 'views/_pair/view-pair.html',
-				controller: 'PairCtrl',
+			.when( '/networks/:networkId?', {
+				templateUrl: 'views/_networks/view-networks.html',
+				controller: 'NetworksCtrl',
 				controllerAs: 'vm'
 			} )
 			.when( '/welcome', {

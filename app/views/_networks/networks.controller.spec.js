@@ -1,4 +1,4 @@
-describe( ':: PairCtrl', function() {
+describe( ':: NetworksCtrl', function() {
 
 	'use strict';
 	

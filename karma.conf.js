@@ -84,9 +84,9 @@ module.exports = function( config ) {
 			// app views :: welcome
 			'app/views/_welcome/welcome.controller.js',
 			'app/views/_welcome/welcome.controller.spec.js',
-			// app views :: pair
-			'app/views/_pair/pair.controller.js',
-			'app/views/_pair/pair.controller.spec.js'
+			// app views :: networks
+			'app/views/_networks/networks.controller.js',
+			'app/views/_networks/networks.controller.spec.js'
 		],
 		frameworks: [ 'jasmine' ],
 		reporters: [ 'mocha' ] // @see https://www.npmjs.com/package/karma-mocha-reporter

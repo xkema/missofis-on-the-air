@@ -1,5 +1,5 @@
 /**
- * Pair controller
+ * Networks controller
  */
 (function () {
 
@@ -7,14 +7,14 @@
 
 	angular
 		.module( 'com.missofis.ontheair' )
-		.controller( 'PairCtrl', PairCtrl );
+		.controller( 'NetworksCtrl', NetworksCtrl );
 
-	PairCtrl.$inject = [ '$log' ];
+	NetworksCtrl.$inject = [ '$log' ];
 
 	/**
-	 * Pair controller
+	 * Networks controller
 	 */
-	function PairCtrl( $log ) {
+	function NetworksCtrl( $log ) {
 
 		var vm = this;
 
@@ -39,9 +39,7 @@
 
 		// controller initialize
 		function _init() {
-
-			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'PairCtrl' );
-
+			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'NetworksCtrl' );
 		}
 
 	}
