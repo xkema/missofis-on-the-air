@@ -5,15 +5,17 @@ describe( ':: WelcomeCtrl', function() {
 	// MockHelpers is defined in the global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
 
-	var $controller, $mdToast, $location,
-		WelcomeCtrl, OnTheAirUtils, OnTheAirFirebaseAuth;
+	var $controller, $rootScope, $mdToast, $location,
+		WelcomeCtrl, OnTheAirUtils, OnTheAirFirebaseAuth,
+		_scope;
 
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( _$controller_, _$mdToast_, _$location_, _OnTheAirUtils_, _OnTheAirFirebaseAuth_ ) {
-			$controller = _$controller_; $mdToast = _$mdToast_; $location = _$location_;
+		angular.mock.inject( function( _$controller_, _$rootScope_, _$mdToast_, _$location_, _OnTheAirUtils_, _OnTheAirFirebaseAuth_ ) {
+			$controller = _$controller_; $rootScope = _$rootScope_; $mdToast = _$mdToast_; $location = _$location_;
 			OnTheAirUtils = _OnTheAirUtils_; OnTheAirFirebaseAuth = _OnTheAirFirebaseAuth_;
-			WelcomeCtrl = $controller( 'WelcomeCtrl' );
+			_scope = $rootScope.$new();
+			WelcomeCtrl = $controller( 'WelcomeCtrl', { $scope: _scope } );
 		} );
 	} );
 
@@ -23,6 +25,7 @@ describe( ':: WelcomeCtrl', function() {
 			expect( WelcomeCtrl.form.register ).toBeDefined();
 			expect( WelcomeCtrl.form.login ).toBeDefined();
 			expect( WelcomeCtrl.appState.user ).toEqual( false );
+			expect( WelcomeCtrl.activeTab ).toEqual( 0 );
 		} );
 
 		it( 'should define form submit handlers', function() {
@@ -56,6 +59,7 @@ describe( ':: WelcomeCtrl', function() {
 					}
 				};
 			} );
+			_scope.formRegisterUser = { $valid: true }; // mock form validity
 			WelcomeCtrl.registerUser();
 			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'You\'re registered! We also logged you in! Happy browsing!' );
 			expect( $location.path ).toHaveBeenCalledWith( '/' );
@@ -71,6 +75,7 @@ describe( ':: WelcomeCtrl', function() {
 					}
 				};
 			} );			
+			_scope.formRegisterUser = { $valid: true }; // mock form validity
 			WelcomeCtrl.registerUser();
 			expect( $mdToast.showSimple ).toHaveBeenCalledWith( _error.message );
 		} );
@@ -138,6 +143,15 @@ describe( ':: WelcomeCtrl', function() {
 			} );
 			WelcomeCtrl.logoutUser();
 			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'See u later!' );
+		} );
+
+		it( 'should show toaster with "Check the data.." message if form is invalid', function() {
+			spyOn( $mdToast, 'showSimple' );
+			spyOn( OnTheAirFirebaseAuth, 'register' );
+			_scope.formRegisterUser = { $valid: false }; // mock form validity
+			WelcomeCtrl.registerUser();
+			expect( $mdToast.showSimple ).toHaveBeenCalledWith( 'Check the data you\'ve provided for register form, something is not validated in!' );
+			expect( OnTheAirFirebaseAuth.register ).not.toHaveBeenCalled();
 		} );
 
 	} );

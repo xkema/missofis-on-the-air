@@ -59,17 +59,17 @@
 				$mdToast.showSimple( 'Check the data you\'ve provided for register form, something is not validated in!' );
 			}
 			else {
-			OnTheAirFirebaseAuth
-				.register( vm.form.register.email, vm.form.register.password )
-				.then( function( response ) {
-					$mdToast.showSimple( 'You\'re registered! We also logged you in! Happy browsing!' );
-					$location.path( '/' );
-					$log.debug( response );
-				}, function( error ) {
-					// firebase error object structure is { code: 'string', message: 'string' }
-					$mdToast.showSimple( error.message );
-					$log.debug( error );
-				} );				
+				OnTheAirFirebaseAuth
+					.register( vm.form.register.email, vm.form.register.password )
+					.then( function( response ) {
+						$mdToast.showSimple( 'You\'re registered! We also logged you in! Happy browsing!' );
+						$location.path( '/' );
+						$log.debug( response );
+					}, function( error ) {
+						// firebase error object structure is { code: 'string', message: 'string' }
+						$mdToast.showSimple( error.message );
+						$log.debug( error );
+					} );				
 			}
 		}
 
