@@ -73,6 +73,8 @@ module.exports = function( config ) {
 			'app/components/_search/search.component.js',
 			'app/components/_search/search.controller.js',
 			'app/components/_search/search.controller.spec.js',
+			// directive :: password repeat validator
+			'app/components/_password-repeat/password-repeat.directive.js',
 			// app views :: home
 			'app/views/_home/home.controller.js',
 			'app/views/_home/home.controller.spec.js',

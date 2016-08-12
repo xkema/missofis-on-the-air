@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
 						
 						'app/views/_*/*.controller?(.spec).js',
 						'app/partials/_*/*.(controller|directive)?(.spec).js',
-						'app/components/_*/*.(controller|component)?(.spec).js',
+						'app/components/_*/*.(controller|component|directive)?(.spec).js',
 						
 						'app/views/_*/view-*.html',
 						'app/partials/_*/template-*.html',

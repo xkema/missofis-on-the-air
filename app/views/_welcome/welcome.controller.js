@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'WelcomeCtrl', WelcomeCtrl );
 
-	WelcomeCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$location', '$mdToast' ];
+	WelcomeCtrl.$inject = [ '$log', 'OnTheAirFirebaseAuth', 'OnTheAirUtils', '$location', '$mdToast', '$scope' ];
 
 	/**
 	 * Welcome controller
 	 */
-	function WelcomeCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $location, $mdToast ) {
+	function WelcomeCtrl( $log, OnTheAirFirebaseAuth, OnTheAirUtils, $location, $mdToast, $scope ) {
 
 		var vm = this;
 
@@ -37,6 +37,7 @@
 			}
 		};
 		vm.appState = null;
+		vm.activeTab = 0;
 
 		// controller api
 		vm.registerUser = _registerUser;
@@ -54,6 +55,10 @@
 
 		// login user
 		function _registerUser() {
+			if( !$scope.formRegisterUser.$valid ) {
+				$mdToast.showSimple( 'Check the data you\'ve provided for register form, something is not validated in!' );
+			}
+			else {
 			OnTheAirFirebaseAuth
 				.register( vm.form.register.email, vm.form.register.password )
 				.then( function( response ) {
@@ -64,7 +69,8 @@
 					// firebase error object structure is { code: 'string', message: 'string' }
 					$mdToast.showSimple( error.message );
 					$log.debug( error );
-				} );
+				} );				
+			}
 		}
 
 		// login user
@@ -96,6 +102,8 @@
 		function _init() {
 			$log.info( '$$____ :: CONTROLLER INITIALIZE', 'WelcomeCtrl' );
 			vm.appState = OnTheAirUtils.getAppState();
+			// todo :: set active tab based on url params or route
+			// vm.activeTab = 1;
 		}
 
 	}
