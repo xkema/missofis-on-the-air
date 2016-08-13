@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'DetailCtrl', DetailCtrl );
 
-	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope', '_show', '$filter' ];
+	DetailCtrl.$inject = [ '$log', 'TMDbTV', '$routeParams', 'OnTheAirFirebaseDatabase', 'OnTheAirUtils', '$scope', '$mdDialog', '$mdToast', '$location', '$rootScope', '_show', '$filter', '$q' ];
 
 	/**
 	 * Detail controller
 	 */
-	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope, _show, $filter ) {
+	function DetailCtrl( $log, TMDbTV, $routeParams, OnTheAirFirebaseDatabase, OnTheAirUtils, $scope, $mdDialog, $mdToast, $location, $rootScope, _show, $filter, $q ) {
 
 		var vm = this;
 
@@ -32,10 +32,12 @@
 		vm.video = null;
 		vm.youtubePlayer = null;
 		vm.pageLoading = true;
+		vm.similar = null;
 
 		// controller api
 		vm.getShow = _getShow;
 		vm.getVideos = _getVideos;
+		vm.getSimilarShows = _getSimilarShows;
 		vm.setNetworks = _setNetworks;
 		vm.toggleFavorite = _toggleFavorite;
 		vm.toggleVideo = _toggleVideo;
@@ -56,11 +58,19 @@
 
 		// get show videos
 		function _getVideos() {
-			TMDbTV.get( { id: $routeParams.showId, endpoint: 'videos' } )
+			return TMDbTV.get( { id: $routeParams.showId, endpoint: 'videos' } )
 				.$promise
 				.then( function( response ) {
 					vm.video = $filter( 'filter' )( response.results, 'Youtube' )[0];
-					vm.pageLoading = false;
+				} );
+		}
+
+		// get show similar shows
+		function _getSimilarShows() {
+			return TMDbTV.get( { id: $routeParams.showId, endpoint: 'similar' } )
+				.$promise
+				.then( function( response ) {
+					vm.similar = response.results;
 				} );
 		}
 
@@ -161,8 +171,15 @@
 					return;
 				}
 			} );
-			vm.getShow();
-			vm.getVideos();
+			vm.getShow(); // not a http call, gets resolved _show object
+			var p1 = vm.getVideos();
+			var p2 = vm.getSimilarShows();
+			// hide progress bar
+			$q
+				.all( [ p1, p2 ] )
+				.then( function() {
+					vm.pageLoading = false;
+				} );
 		}
 
 	}

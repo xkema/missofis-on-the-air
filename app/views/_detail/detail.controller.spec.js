@@ -30,11 +30,13 @@ describe( ':: DetailCtrl', function() {
 			expect( DetailCtrl.video ).toBeNull();
 			expect( DetailCtrl.youtubePlayer ).toBeNull();
 			expect( DetailCtrl.pageLoading ).toEqual( true );
+			expect( DetailCtrl.similar ).toBeNull();
 		} );
 
 		it( 'should define form submit handlers', function() {
 			expect( DetailCtrl.getShow ).toBeDefined();
 			expect( DetailCtrl.getVideos ).toBeDefined();
+			expect( DetailCtrl.getSimilarShows ).toBeDefined();
 			expect( DetailCtrl.setNetworks ).toBeDefined();
 			expect( DetailCtrl.toggleFavorite ).toBeDefined();
 			expect( DetailCtrl.toggleVideo ).toBeDefined();
@@ -63,6 +65,15 @@ describe( ':: DetailCtrl', function() {
 		} );
 
 		xit( 'should fill "show" object', function() {
+			var _showMockData = MockHelpers.getShowMockData();
+			$httpBackend
+				.expect( 'GET', 'test/mock-data/get.tv.id.json' )
+				.respond( MockHelpers.getShowMockData() );
+			$httpBackend.flush();
+			expect( DetailCtrl.show ).toEqual( _showMockData );
+		} );
+
+		xit( 'should fill "similiar" object', function() {
 			var _showMockData = MockHelpers.getShowMockData();
 			$httpBackend
 				.expect( 'GET', 'test/mock-data/get.tv.id.json' )
