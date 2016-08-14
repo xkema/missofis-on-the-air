@@ -44,7 +44,7 @@
 				<md-card-title>
 					<md-card-title-text>
 						<span class="md-headline">{{show.name}}</span>
-						<span class="md-subhead">{{show.overview || '...' | limitTo:96}}.. <a href="/shows/{{show.id}}">more &raquo;</a></span>
+						<span class="md-subhead">{{show.overview || '...' | limitTo:96}}..</span>
 					</md-card-title-text>
 					<md-card-title-media hide show-gt-md>
 						<div class="md-media-sm ota-card-media-responsive">
@@ -52,6 +52,9 @@
 						</div>
 					</md-card-title-media>
 				</md-card-title>
+				<md-card-actions layout="row" layout-align="start start">
+					<md-button class="md-primary" ng-href="/shows/{{show.id}}">More</md-button>
+				</md-card-actions>
 			</md-card>
 		</div>
 	</div>
