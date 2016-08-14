@@ -1,5 +1,51 @@
-<h1>networks</h1>
+<!-- view :: networks -->
 
-<code style="font-size:10px;font-family:Consolas;background:#fafafa;height:160px;display:block;overflow:scroll;">
-vm networks view :: {{vm}}
-</code>
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Networks</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<md-progress-linear md-mode="indeterminate" class="md-accent" ng-class="{'ota-invisible': !vm.pageLoading}"></md-progress-linear>
+
+<md-content layout="column" layout-align="center" layout-padding>
+	<div layout="column" layout-align-gt-xs="center" ng-show="vm.networksVisible">
+		<div>
+			<md-input-container class="md-block">
+				<label>Filter Networks</label>
+				<input type="search" ng-model="query" name="filter-networks">
+			</md-input-container>
+		</div>
+		<div>
+			<md-chips>
+				<md-chip ng-repeat="network in vm.networks | filter:query as filteredNetworks">
+					<a ng-href="/networks/{{network.id}}">{{network.name}}</a>
+				</md-chip>
+			</md-chips>
+		</div>
+	</div>
+	<md-subheader class="md-primary" ng-show="!vm.networksVisible">Shows of selected network *</md-subheader>
+	<div layout="column" layout-align="center" ng-show="!vm.networksVisible">
+		<div ng-show="0===vm.networkShows.length">
+			<p>Nothing found here, back to networks page?</p>
+			<p><md-button href="/networks">BACK</md-button></p>			
+		</div>
+		<div layout="row" layout-wrap layout-align="center">
+			<md-card flex-gt-xs="50" ng-repeat="show in vm.networkShows">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{show.name}}</span>
+						<span class="md-subhead">{{show.overview || '...' | limitTo:176}}.. <a href="/shows/{{show.id}}">more &raquo;</a></span>
+					</md-card-title-text>
+					<md-card-title-media>
+						<div class="md-media-sm ota-card-media-responsive">
+							<img ng-src="http://image.tmdb.org/t/p/w45{{show.poster_path}}" class="md-card-image" alt="{{show.name}}" title="{{show.name}}">
+						</div>
+					</md-card-title-media>
+				</md-card-title>
+			</md-card>
+		</div>
+	</div>
+</md-content>

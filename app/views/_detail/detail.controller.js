@@ -79,7 +79,7 @@
 			if( vm.appState.user_profile.collector ) {
 				// `angular.copy( _show.networks )` prevents $$hashKey creation of `vm.show = _show;` assignment.
 				OnTheAirFirebaseDatabase
-					.saveNetworks( angular.copy( _show.networks ) )
+					.saveNetworks( angular.copy( _show.networks ), 'tmdb' )
 					.then( function( response ) {
 						// todo :: show toaster message
 					} );

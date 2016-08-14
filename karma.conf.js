@@ -50,6 +50,10 @@ module.exports = function( config ) {
 			'app/services/TMDb/Search/TMDb.Search.module.js',
 			'app/services/TMDb/Search/TMDb.Search.service.js',
 			'app/services/TMDb/Search/TMDb.Search.service.spec.js',
+			// app service :: TMDb Discover module
+			'app/services/TMDb/Discover/TMDb.Discover.module.js',
+			'app/services/TMDb/Discover/TMDb.Discover.service.js',
+			'app/services/TMDb/Discover/TMDb.Discover.service.spec.js',
 			// app service :: Firebase module
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.module.js',
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.config.js',

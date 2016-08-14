@@ -83,13 +83,14 @@
 		/**
 		 * Save network data for collector data
 		 * 
-		 * @param
+		 * @param networks
+		 * @param source "tmdb"
 		 */
-		function _saveNetworks( networks ) {
+		function _saveNetworks( networks, source ) {
 
 			var _ref = firebase
 				.database()
-				.ref( 'networks/' );
+				.ref( 'networks/' + source );
 
 			// todo :: check if snapshot has alredy have current id
 
@@ -97,8 +98,8 @@
 				.once( 'value' )
 				.then( function( snapshot ) {
 					angular.forEach( networks, function( value, key ) {
-						if( !snapshot.child( 'tmdb' ).val().hasOwnProperty( value.id ) ) {
-							return _ref.child( 'tmdb' ).child( value.id ).set( value.name );
+						if( !snapshot.val() || !snapshot.val().hasOwnProperty( value.id ) ) {
+							return _ref.child( value.id ).set( value.name );
 						}
 					} );
 				} );
