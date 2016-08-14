@@ -3,7 +3,8 @@
 <md-toolbar>
 	<div class="md-toolbar-tools">
 		<h2>
-			<span>Networks</span>
+			<!-- <span>Networks</span> -->
+			<span>{{vm.networkDetails.name || 'Networks'}}</span>
 		</h2>
 	</div>
 </md-toolbar>
@@ -26,7 +27,6 @@
 			</md-chips>
 		</div>
 	</div>
-	<md-subheader class="md-primary" ng-show="!vm.networksVisible">Shows of selected network *</md-subheader>
 	<div layout="column" layout-align="center" ng-show="!vm.networksVisible">
 		<div ng-show="0===vm.networkShows.length">
 			<p>Nothing found here, back to networks page?</p>

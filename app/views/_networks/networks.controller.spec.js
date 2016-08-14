@@ -22,6 +22,7 @@ describe( ':: NetworksCtrl', function() {
 		it( 'should define controller bindables', function() {
 			expect( NetworksCtrl.networkShows ).toBeNull();
 			expect( NetworksCtrl.networks ).toBeNull();
+			expect( NetworksCtrl.networkDetails ).toBeNull();
 			expect( NetworksCtrl.pageLoading ).toBe( true );
 			expect( NetworksCtrl.networksVisible ).toBe( false );
 		} );

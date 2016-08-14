@@ -54,6 +54,10 @@ module.exports = function( config ) {
 			'app/services/TMDb/Discover/TMDb.Discover.module.js',
 			'app/services/TMDb/Discover/TMDb.Discover.service.js',
 			'app/services/TMDb/Discover/TMDb.Discover.service.spec.js',
+			// app service :: TMDb Networks module
+			'app/services/TMDb/Networks/TMDb.Networks.module.js',
+			'app/services/TMDb/Networks/TMDb.Networks.service.js',
+			'app/services/TMDb/Networks/TMDb.Networks.service.spec.js',
 			// app service :: Firebase module
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.module.js',
 			'app/services/OnTheAirFirebase/OnTheAirFirebase.config.js',

@@ -11,7 +11,8 @@
 
 		'com.missofis.TMDb.TV',
 		'com.missofis.TMDb.Search',
-		'com.missofis.TMDb.Discover'
+		'com.missofis.TMDb.Discover',
+		'com.missofis.TMDb.Networks'
 
 	] );
 

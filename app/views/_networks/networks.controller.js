@@ -9,12 +9,12 @@
 		.module( 'com.missofis.ontheair' )
 		.controller( 'NetworksCtrl', NetworksCtrl );
 
-	NetworksCtrl.$inject = [ '$log', 'OnTheAirFirebaseDatabase', '$q', '$routeParams', 'TMDbDiscover' ];
+	NetworksCtrl.$inject = [ '$log', 'OnTheAirFirebaseDatabase', '$q', '$routeParams', 'TMDbDiscover', 'TMDbNetworks' ];
 
 	/**
 	 * Networks controller
 	 */
-	function NetworksCtrl( $log, OnTheAirFirebaseDatabase, $q, $routeParams, TMDbDiscover ) {
+	function NetworksCtrl( $log, OnTheAirFirebaseDatabase, $q, $routeParams, TMDbDiscover, TMDbNetworks ) {
 
 		var vm = this;
 
@@ -27,6 +27,7 @@
 		// controller bindables
 		vm.networkShows = null;
 		vm.networks = null;
+		vm.networkDetails = null;
 		vm.pageLoading = true;
 		vm.networksVisible = false;
 
@@ -57,7 +58,12 @@
 
 		// get selected network details
 		function _getNetworkDetails() {
-			// todo :: set details service
+			return TMDbNetworks
+				.get( { id: $routeParams.networkId } )
+				.$promise
+				.then( function( response ) {
+					vm.networkDetails = response;
+				} );
 		}
 
 		// fetch networks data form db
