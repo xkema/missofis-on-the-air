@@ -5,15 +5,19 @@ describe( ':: NetworksCtrl', function() {
 	// MockHelpers helper script is defined in global scope and injected via karma.conf.js
 	// @see `mock-helpers.js` for mock data helpers
 
-	var $controller,
-		NetworksCtrl, OnTheAirFirebaseDatabase;
+	var $controller, $rootScope,
+		NetworksCtrl, OnTheAirFirebaseDatabase,
+    _scope;
+
+    // OnTheAirUtils, $scope, $mdDialog, $location, $mdToast
 
 	beforeEach( function() {
 		angular.mock.module( 'com.missofis.ontheair' );
-		angular.mock.inject( function( _$controller_, _OnTheAirFirebaseDatabase_ ) {
-			$controller = _$controller_;
+		angular.mock.inject( function( _$controller_, _$rootScope_, _OnTheAirFirebaseDatabase_ ) {
+			$controller = _$controller_; $rootScope = _$rootScope_;
 			OnTheAirFirebaseDatabase = _OnTheAirFirebaseDatabase_;
-			NetworksCtrl = $controller( 'NetworksCtrl' );
+      _scope = $rootScope.$new();
+			NetworksCtrl = $controller( 'NetworksCtrl', { $scope: _scope } );
 		} );
 	} );
 
