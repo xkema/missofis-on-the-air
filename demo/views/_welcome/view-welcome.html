@@ -1,0 +1,56 @@
+<!-- view :: login -->
+
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Welcome</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<md-tabs md-dynamic-height md-border-bottom md-selected="vm.activeTab">
+	<md-tab label="Login">
+		<md-content class="md-padding" layout="row" layout-align="center start" layout-padding>
+			<div flex="90" flex-gt-xs="50">
+				<h1 class="md-display-1">Login</h1>
+				<p>Login with your email and password.</p>
+				<p>&nbsp;</p>
+				<form ng-submit="vm.loginUser()" name="formLoginUser">
+					<md-input-container class="md-block">
+						<label>Email</label>
+						<input type="email" ng-model="vm.form.login.email" name="email" required>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Password</label>
+						<input type="password" ng-model="vm.form.login.password" name="password" required>
+					</md-input-container>
+					<md-button type="submit" class="md-primary md-raised">Login</md-button>
+				</form>
+			</div>
+		</md-content>
+	</md-tab>
+	<md-tab label="Register">
+		<md-content class="md-padding" layout="row" layout-align="center start" layout-padding>
+			<div flex="90" flex-gt-xs="50">
+				<h1 class="md-display-1">Register</h1>
+				<p>New to missofis-on-the-air? Register safely with Firebase Authentication Provider.</p>
+				<p>&nbsp;</p>
+				<form ng-submit="vm.registerUser()" name="formRegisterUser" novalidate>
+					<md-input-container class="md-block">
+						<label>Email</label>
+						<input type="email" ng-model="vm.form.register.email" name="email" required>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Password</label>
+						<input type="password" ng-model="vm.form.register.password" name="password" required>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Password (again)</label>
+						<input type="password" ng-model="vm.form.register.passwordRepeat" name="passwordRepeat" required on-the-air-password-repeater match-to="vm.form.register.password">
+					</md-input-container>
+					<md-button type="submit" class="md-primary md-raised">Register</md-button>			
+				</form>
+			</div>
+		</md-content>
+	</md-tab>
+</md-tabs>

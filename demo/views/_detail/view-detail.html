@@ -1,0 +1,61 @@
+<!-- view :: detail -->
+
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Detail</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<md-progress-linear md-mode="indeterminate" class="md-accent" ng-class="{'ota-invisible': !vm.pageLoading}"></md-progress-linear>
+
+<md-content layout="column" layout-align-gt-xs="center" layout-padding>
+	<div layout="row" layout-align-gt-xs="center">
+		<div flex-gt-xs="60">
+			<md-card flex="noshrink">
+				<img ng-src="http://image.tmdb.org/t/p/w500{{vm.show.backdrop_path}}" class="md-card-image" alt="{{vm.show.name}}" title="{{vm.show.name}}" ng-show="!vm.videoVisible">				
+				<div class="embed-responsive embed-responsive-16by9" ng-show="vm.videoVisible">
+					<youtube-video class="embed-responsive-item" video-id="vm.video.key" player-vars="{controls:0,showinfo:0}" player="vm.youtubePlayer"></youtube-video>
+				</div>				
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{vm.show.name}}, <small>{{vm.show.id}}</small></span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<p>{{vm.show.overview}}</p>
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="center center">
+					<md-button class="md-icon-button" ng-click="vm.toggleFavorite()" ng-class="{'md-accent': vm.favorited}">
+						<md-icon>favorite</md-icon>
+					</md-button>
+					<md-button class="md-icon-button" ng-click="vm.toggleVideo()" ng-show="vm.video" ng-class="{'md-primary md-hue-3': vm.videoVisible}">
+						<md-icon>ondemand_video</md-icon>
+					</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
+	<!-- similiar -->
+	<div layout="row" layout-align-gt-xs="center">
+		<div flex-gt-xs="60">
+			<md-card flex="noshrink" ng-repeat="show in vm.similar">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{show.name}}</span>
+						<span class="md-subhead">{{show.overview || '...' | limitTo:96}}..</span>
+					</md-card-title-text>
+					<md-card-title-media hide show-gt-md>
+						<div class="md-media-sm ota-card-media-responsive">
+							<img ng-src="http://image.tmdb.org/t/p/w45{{show.poster_path}}" class="md-card-image" alt="{{show.name}}" title="{{show.name}}">
+						</div>
+					</md-card-title-media>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="start start">
+					<md-button class="md-primary" ng-href="/shows/{{show.id}}">More</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
+</md-content>

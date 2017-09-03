@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="com.missofis.ontheair" ng-strict-di>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- html5mode base -->
+  <base href="/">
+
+  <title>missofis-on-the-air</title>
+  <meta name="description" content="missofis-on-the-air">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- google fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+  <!-- styles (angular material) -->
+  <link rel="stylesheet" type="text/css" href="./angular-material.min.css">
+
+  <!-- scripts top -->
+  <script src="./top.js"></script>
+
+</head>
+<body>
+
+  <!-- app main wrapper -->
+  <div layout="column" id="ontheair-app-wrapper" layout-fill>
+
+    <!-- app header -->
+    <div>
+      <on-the-air-header></on-the-air-header>     
+    </div>
+
+    <!-- app views -->
+    <div layout="column"> <!-- holds a md-toolbar and md-content -->
+      <div ng-view></div>     
+    </div>
+    
+  </div>
+
+  <!-- scripts bottom -->
+  <script src="./bottom.js"></script>
+
+</body>
+</html>
