@@ -37,7 +37,7 @@
 	<md-subheader class="md-primary" ng-if="vm.favorites">Favorites</md-subheader>
 	<div layout="row" layout-align="start start">
 		<div flex="90">
-			<md-button ng-href="/shows/{{id}}" ng-repeat="(id, name) in vm.favorites">
+			<md-button ng-href="./shows/{{id}}" ng-repeat="(id, name) in vm.favorites">
 				<md-icon>link</md-icon>
 				{{name}} 
 			</md-button>

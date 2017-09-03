@@ -21,7 +21,7 @@
 		<div>
 			<md-chips>
 				<md-chip ng-repeat="network in vm.networks | filter:query as filteredNetworks">
-					<a ng-href="/networks/{{network.id}}">{{network.name}}</a>
+					<a ng-href="./networks/{{network.id}}">{{network.name}}</a>
 				</md-chip>
 			</md-chips>
 		</div>
@@ -29,7 +29,7 @@
 	<div layout="column" layout-align="center" ng-show="!vm.networksVisible">
 		<div ng-show="0===vm.networkShows.length">
 			<p>Nothing found here, back to networks page?</p>
-			<p><md-button href="/networks">BACK</md-button></p>			
+			<p><md-button href="./networks">BACK</md-button></p>			
 		</div>
 		<div layout="row" layout-wrap layout-align="center">
 			<md-card flex-gt-xs="50" ng-repeat="show in vm.networkShows">
@@ -45,7 +45,7 @@
 					</md-card-title-media>
 				</md-card-title>
 				<md-card-actions layout="row" layout-align="start start">
-					<md-button class="md-primary" ng-href="/shows/{{show.id}}">More</md-button>
+					<md-button class="md-primary" ng-href="./shows/{{show.id}}">More</md-button>
 				</md-card-actions>
 			</md-card>
 		</div>

@@ -1,12 +1,12 @@
 <header class="ota-header" layout="row" layout-align="none center">
-	<md-button href="/" class="md-icon-button" aria-label="Home" title="Home">
+	<md-button href="./" class="md-icon-button" aria-label="Home" title="Home">
 		<md-icon>home</md-icon>
 	</md-button>
-	<md-button href="/networks" class="md-icon-button" aria-label="TV Networks" title="TV Networks">
+	<md-button href="./networks" class="md-icon-button" aria-label="TV Networks" title="TV Networks">
 		<md-icon>wifi_tethering</md-icon> <!-- or tv icon -->
 	</md-button>
 	<span flex></span>
-	<md-button ng-show="!vm.appState.user" href="/welcome" aria-label="login">Login/Register</md-button>
+	<md-button ng-show="!vm.appState.user" href="./welcome" aria-label="login">Login/Register</md-button>
 	<md-menu md-position-mode="target-right target" md-offset="-10 10" ng-show="vm.appState.user">
 		<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
 			<md-icon>more_vert</md-icon>
